@@ -28,7 +28,7 @@
     "author": "Denis Lopatin www.denis-lopatin@yandex.ru",
     "license": "ISC",
     "browserslist": [
-        "> 1%"
+        "ie 11"
     ],
     "devDependencies": {
         "@babel/core": "^7.12.10",
