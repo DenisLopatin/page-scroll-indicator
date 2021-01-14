@@ -5,15 +5,152 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WEBPACK-5</title>
-</head>
-<body style='background-color: white'>
+    <title>Example Page Scroll Indicator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            background-color: #202020;
+        }
 
-<div class='container' style="height: 500vh; border: 1px solid black; max-width: 1200px; margin: 20px auto">
-    <p style="line-height: 2; color: black">
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequatur, est repellat sint ut voluptate. Blanditiis corporis culpa eligendi iste odit, quis reiciendis rerum sequi voluptas voluptates! Ea, neque, vitae.</span><span>Accusantium alias corporis deserunt distinctio esse excepturi fugit libero officia suscipit. Adipisci aperiam aspernatur corporis cum, cupiditate dicta distinctio dolore, maxime nam nulla officiis quas? Consectetur exercitationem illo ipsam nemo?</span><span>Autem culpa cum ducimus ea fuga, ipsam labore laudantium magni maiores molestias mollitia natus nisi non odio praesentium repellendus saepe sapiente ullam voluptate voluptatem! Architecto inventore nemo sequi sit sunt?</span><span>A aut beatae blanditiis cum deleniti dicta dolor dolorum earum enim eum expedita, fugiat, incidunt inventore ipsum nemo odio officia optio perspiciatis sapiente soluta tenetur totam veniam voluptates voluptatibus voluptatum?</span><span>Accusantium dolores provident tempore vero! Aliquid asperiores assumenda enim ex nihil obcaecati quod, repellendus sint sunt veritatis. Aperiam commodi dolor illo in ipsum natus repellendus sint veniam. Harum sapiente, voluptates.</span><span>Amet architecto atque consectetur culpa cumque dolores doloribus enim expedita illo ipsum iste magnam, magni minus neque nisi non officiis optio provident quasi quos saepe sint tempora tenetur voluptas voluptate!</span><span>Aliquid culpa laborum nemo veniam. Alias aliquam commodi consequatur minima officia saepe, velit. Aperiam labore molestias neque optio quis temporibus ut. Asperiores dolores incidunt laborum optio perferendis repudiandae soluta voluptatibus?</span><span>Consequuntur dolorem earum mollitia placeat. Eaque et incidunt provident ullam. Cupiditate eius eveniet iste iusto minima nisi perspiciatis tempore voluptates. Atque deserunt dolorem impedit natus nihil porro provident quos! Provident.</span><span>Dolore, doloremque, velit? Architecto, dolore inventore labore neque nobis quae ut? Aspernatur cumque enim maxime! Assumenda tempore, veritatis. Commodi cupiditate doloribus ea eligendi error illum magnam modi qui soluta veritatis!</span><span>Aspernatur beatae earum nesciunt sapiente! Accusamus architecto corporis enim optio porro sequi voluptatibus? Ab aperiam asperiores cum error, est illo magni natus nemo nesciunt odit porro, quod repudiandae sint voluptates!</span><span>A aliquam asperiores aspernatur debitis ducimus error fugiat fugit id impedit, ipsum laboriosam laudantium magni maiores nostrum pariatur quas ratione sequi sint sit temporibus. Assumenda earum eos fugit molestiae reprehenderit.</span><span>Amet asperiores atque autem dolor doloremque dolores dolorum earum fugit nemo, neque non nulla odio quae quam reprehenderit sint voluptate! Amet aperiam excepturi itaque perferendis repellendus saepe sequi ullam. Officia!</span><span>Debitis dolorem dolores, doloribus eveniet ex, explicabo facilis in laboriosam magnam omnis quas quos rem repellat. Alias amet aut culpa cumque dolorum eius facilis, iusto, quae quaerat repellendus rerum, sunt.</span><span>Aliquam commodi, corporis cupiditate deleniti dicta eligendi error eum inventore itaque laudantium pariatur possimus praesentium quaerat quo rem repudiandae similique suscipit temporibus ullam voluptate. Consequuntur exercitationem laborum magnam officia quas?</span><span>Accusamus consectetur debitis delectus deserunt dolore dolorem error et eum incidunt laborum molestias mollitia numquam officiis perspiciatis quos repellat sed, sequi tempora velit, voluptatibus! Aspernatur dolores nihil quo suscipit vel!</span><span>Asperiores, assumenda esse eveniet ipsa itaque iusto, magni nostrum odit porro rem repellendus sint tempora vitae. Ab, adipisci asperiores distinctio fuga harum, laborum maxime minima modi repellat similique tempora velit.</span><span>Accusantium alias amet animi aperiam, architecto, at deleniti, earum eum expedita illo libero magnam maiores molestiae neque nesciunt numquam perferendis porro praesentium quod repudiandae sed tempora tenetur ullam veniam veritatis.</span><span>Ad aspernatur blanditiis consequatur distinctio ea eaque eum illum inventore iusto maxime molestias necessitatibus nesciunt nihil nisi obcaecati officia perspiciatis porro quas quia reiciendis reprehenderit soluta, tempora tempore, voluptate voluptates!</span><span>Culpa eligendi iusto laudantium libero non porro possimus rerum tenetur veniam vitae. Adipisci aliquam aut consequuntur cumque eligendi eveniet facilis fuga ipsa, libero, necessitatibus nemo numquam praesentium rem similique vel.</span><span>Commodi consectetur corporis dignissimos dolor dolorem fuga in ipsam iusto laudantium libero odio repellendus, rerum sequi similique unde! Alias blanditiis dolorem ducimus esse inventore molestias neque quaerat quo repellat rerum?</span>
-    </p>
-</div>
+        main {
+            display: block;
+            box-shadow: 0 0 4px aquamarine;
+        }
+
+        pre {
+            color: #57cbf1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .header {
+            border-bottom: 1px solid teal;
+            padding-right: 0.3rem;
+            text-align: right;
+            background-color: azure;
+            box-shadow: 0 2px 5px azure;
+        }
+
+        .section {
+            padding: 1rem 1rem 0.5rem 0.5rem;
+        }
+
+        .footer {
+            border-top: 1px solid teal;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            text-align: right;
+            background-color: azure;
+        }
+
+        .heading {
+            margin: 0;
+            padding-bottom: 0.5rem;
+            color: #202020;
+            text-shadow: 0 0 3px azure;
+        }
+
+        .text {
+            margin: 0;
+            padding-bottom: 0.5rem;
+            color: azure;
+        }
+
+        .info {
+            padding: 0 0.25rem;
+            background-color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+
+<div class='scroll-top'></div>
+
+<main class='container'>
+    <header class='header'>
+        <h2 class='heading'>
+            Page Scroll Indicator
+        </h2>
+    </header>
+    <section class='section'>
+        <h2 class='heading'>
+            Info
+        </h2>
+
+        <p class='text'>
+            This plugin sets the scroll bar indicator for the document.
+        </p>
+
+        <h2 class='heading'>
+            Install
+        </h2>
+
+        <p class='text'>
+            NPM:
+        </p>
+
+        <p class='text'>
+            npm install --save-dev page-scroll-indicator
+        </p>
+
+        <h2 class='heading'>
+            Use
+        </h2>
+
+        <p class='text'>
+            pageScrollIndicator - configuration function. Accepts the configuration.
+        </p>
+
+        <p class='text'>
+            For example:
+        </p>
+
+        <pre>
+pageScrollIndicator({
+element: '.scroll-top',
+zIndex: 99,
+height: 5,
+opacity: 0.75,
+backgroundColor: 'blue',
+boxShadow: 'aqua inset',
+transition: '200ms ease-in-out',
+});
+        </pre>
+
+        <p class='text'>
+            <span class='info'>element</span> - class of the element to be selected for creating the indicator. Default - class '.scroll-page-indicator'. Type 'string' ('.my-class').
+        </p>
+
+        <p class='text'>
+            <span class='info'>zIndex</span> - z-index of the element. Default - 10000. Type 'string' or 'number' (30 or '456').
+        </p>
+
+        <p class='text'>
+            <span class='info'>height</span> - height of the element. Default - 10px. Type 'string' or 'number' (10 or '18').
+        </p>
+
+        <p class='text'>
+            <span class='info'>opacity</span> - opacity of the element. Default - 1. Type 'string' or 'number' (0.25 or '0.9').
+        </p>
+
+        <p class='text'>
+            <span class='info'>backgroundColor</span> - background-color of the element. Default - aqua. Type 'string' ('red').
+        </p>
+
+        <p class='text'>
+            <span class='info'>boxShadow</span> - box-shadow of the element. Default - 0 0 5px transparent. Type 'string' ('green' or 'green inset').
+        </p>
+
+        <p class='text'>
+            <span class='info'>transition</span> - transition of the element. Default - right 300ms linear. Type 'string' ('350ms easy-in' or '1s easy-in-out').
+        </p>
+    </section>
+    <footer class='footer'></footer>
+</main>
 
 </body>
 </html>
