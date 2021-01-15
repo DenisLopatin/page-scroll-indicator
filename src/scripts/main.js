@@ -10,7 +10,9 @@ pageScrollIndicator({
 });
 
 if (typeof module === 'object' && typeof module.exports === 'object') {
-    module.exports = pageScrollIndicator;
+    module.exports = {
+        plugin: pageScrollIndicator,
+    };
 } else {
     window.pageScrollIndicator = pageScrollIndicator;
 }
