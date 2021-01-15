@@ -1,12 +1,10 @@
 import '../index.html';
-import pageScrollIndicator from './page-scroll-indicator';
+import pageScroll from './development-page-scroll-indicator';
 
-pageScrollIndicator({
-    element: '.scroll-top',
-    zIndex: 99,
-    height: 5,
-    opacity: 0.75,
-    backgroundColor: 'blue',
-    boxShadow: 'aqua inset',
-    transition: '200ms ease-in-out',
+pageScroll({
+    element: '.scroll-page-indicator',
+    zIndex: 10000,
+    height: 10,
+    opacity: 1,
+    backgroundColor: 'aqua',
 });

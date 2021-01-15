@@ -8,7 +8,7 @@ This plugin sets the scroll bar indicator for the document.
 ### Use
 ___pageScrollIndicator___ - configuration function. Accepts the configuration. For example:
 
-    pageScrollIndicator({
+    developmentPageScrollIndicator({
         element: '.scroll-top',
         zIndex: 99,
         height: 5,

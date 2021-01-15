@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'page-scroll-indicator.js',
+        filename: 'development-page-scroll-indicator.js',
         publicPath: '',
     },
     target: isDev ? 'web' : 'browserslist',
