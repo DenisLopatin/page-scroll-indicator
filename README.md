@@ -26,3 +26,6 @@ ___pageScrollIndicator___ - configuration function. Accepts the configuration. F
 * boxShadow - box-shadow of the element. Default - 0 0 5px transparent. Type 'string' ('green' or 'green inset').
 * transition - transition of the element. Default - right 300ms linear. Type 'string' ('350ms easy-in' or '1s easy-in-out').
 
+The scroll indicator will be installed at the very top of the site:
+
+![Альтернативный текст](https://github.com/DenisLopatin/page-scroll-indicator/blob/main/src/image/scroll-page-indicator.jpg?raw=true)
