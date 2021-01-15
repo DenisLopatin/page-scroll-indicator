@@ -1,10 +1,10 @@
 /** function scroll
  *  calculates the scroll height of the document
  *  @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
- *  @param { number } margins - number calculated from fields
+ *  @param { number } margin - number calculated from fields
  * */
 
-function scroll(scrollPageIndicator, margins) {
+function scroll(scrollPageIndicator, margin) {
     try {
         const documentHeightValues = [
             document.body.scrollHeight,
@@ -17,7 +17,7 @@ function scroll(scrollPageIndicator, margins) {
         const documentHeight = Math.min(...documentHeightValues);
         const documentFullHeight = Math.max(...documentHeightValues);
         const finalHeight = documentFullHeight - documentHeight;
-        if (finalHeight === margins) return;
+        if (finalHeight === margin) return;
         const scrollTop = window.pageYOffset;
         const result = Math.round((scrollTop * 100) / finalHeight);
         scrollPageIndicator.style.right = `${String(100 - result)}%`;
