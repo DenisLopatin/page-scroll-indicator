@@ -13,6 +13,7 @@
             }
         ],
         "no-param-reassign": "off",
+        "operator-linebreak": "off",
         "no-console": "warn",
         "linebreak-style": "off",
         "quotes": "off",
