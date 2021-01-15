@@ -9,8 +9,4 @@ pageScrollIndicator({
     backgroundColor: 'aqua',
 });
 
-if (typeof module === 'object' && typeof module.exports === 'object') {
-    module.exports = pageScrollIndicator;
-} else {
-    window.pageScrollIndicator = pageScrollIndicator;
-}
+window.pageScrollIndicator = pageScrollIndicator;
