@@ -95,6 +95,5 @@ pageScrollIndicator({
     backgroundColor: 'aqua',
 });
 
-module.exports = pageScrollIndicator;
 window.pageScrollIndicator = pageScrollIndicator;
 export default pageScrollIndicator;
