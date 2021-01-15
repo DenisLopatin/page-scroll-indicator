@@ -8,3 +8,5 @@ pageScroll({
     opacity: 1,
     backgroundColor: 'aqua',
 });
+
+export default pageScroll;
