@@ -1,6 +1,6 @@
 {
     "name": "page-scroll-indicator",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "The page scroll indicator for site",
     "main": "./src/page-scroll-indicator.js",
     "scripts": {
