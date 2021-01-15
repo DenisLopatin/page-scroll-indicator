@@ -1,7 +1,7 @@
 import '../index.html';
-import pageScroll from './development-page-scroll-indicator';
+import pageScrollIndicator from './development-page-scroll-indicator';
 
-pageScroll({
+pageScrollIndicator({
     element: '.scroll-page-indicator',
     zIndex: 10000,
     height: 10,
@@ -9,4 +9,8 @@ pageScroll({
     backgroundColor: 'aqua',
 });
 
-export default pageScroll;
+if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = pageScrollIndicator;
+} else {
+    window.pageScrollIndicator = pageScrollIndicator;
+}

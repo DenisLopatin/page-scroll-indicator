@@ -54,12 +54,12 @@ function getMargins() {
     return Math.max(bodyMargins, bodyElementsMargins);
 }
 
-/** function developmentPageScrollIndicator
+/** function pageScrollIndicator
  *   config function
  *   @param { Object } config - configuration
  * */
 
-function developmentPageScrollIndicator(config) {
+function pageScrollIndicator(config) {
     try {
         const element = document.querySelector(
             config.element || '.scroll-page-indicator',
@@ -87,4 +87,4 @@ function developmentPageScrollIndicator(config) {
     }
 }
 
-export default developmentPageScrollIndicator;
+export default pageScrollIndicator;
