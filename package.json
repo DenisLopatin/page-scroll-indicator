@@ -2,7 +2,7 @@
     "name": "page-scroll-indicator",
     "version": "1.0.9",
     "description": "The page scroll indicator for site",
-    "main": "dist/page-scroll-indicator.js",
+    "main": "./src/page-scroll-indicator.js",
     "scripts": {
         "production": "cross-env NODE_ENV=production webpack",
         "development": "cross-env NODE_ENV=development webpack",

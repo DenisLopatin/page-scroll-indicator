@@ -87,4 +87,14 @@ function pageScrollIndicator(config) {
     }
 }
 
+pageScrollIndicator({
+    element: '.scroll-page-indicator',
+    zIndex: 10000,
+    height: 10,
+    opacity: 1,
+    backgroundColor: 'aqua',
+});
+
+module.exports = pageScrollIndicator;
+window.pageScrollIndicator = pageScrollIndicator;
 export default pageScrollIndicator;
