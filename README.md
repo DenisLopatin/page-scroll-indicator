@@ -29,4 +29,4 @@ ___pageScrollIndicator___ - configuration function. Accepts the configuration. F
 
 The scroll indicator will be installed at the very top of the site:
 
-![Альтернативный текст](https://github.com/DenisLopatin/page-scroll-indicator/blob/main/src/image/scroll-page-indicator.jpg?raw=true)
+![](https://github.com/DenisLopatin/page-scroll-indicator/blob/main/src/image/page-scroll-indicator.jpg?raw=true)
