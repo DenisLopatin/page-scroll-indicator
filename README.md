@@ -2,6 +2,9 @@
 
 This plugin sets the scroll bar indicator for the document.
 
+## Sample page:
+[This is an example of a page using a scroll indicator](https://denislopatin.github.io/Scroll-Page-Indicator/)
+
 ## Install
     npm install --save page-scroll-indicator
     
@@ -26,6 +29,10 @@ ___pageScrollIndicator___ - configuration function. Accepts the configuration. F
 * backgroundColor - background-color of the element. Default - aqua. Type 'string' ('red').
 * boxShadow - box-shadow of the element. Default - 0 0 5px transparent. Type 'string' ('green' or 'green inset').
 * transition - transition of the element. Default - right 300ms linear. Type 'string' ('350ms easy-in' or '1s easy-in-out').
+
+Or connect the file at the bottom of your page: 
+
+    <script src="https://denislopatin.github.io/Scroll-Page-Indicator/page-scroll-indicator.js"> </script>
 
 The scroll indicator will be installed at the very top of the site:
 
