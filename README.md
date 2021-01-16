@@ -6,6 +6,7 @@ This plugin sets the scroll bar indicator for the document.
     npm install --save page-scroll-indicator
     
 ### Use
+    import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
 ___pageScrollIndicator___ - configuration function. Accepts the configuration. For example:
 
     developmentPageScrollIndicator({
