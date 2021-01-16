@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Page Scroll Indicator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            background-color: #202020;
+        }
+
+        main {
+            display: block;
+            box-shadow: 0 0 4px aquamarine;
+        }
+
+        pre {
+            margin: 0;
+            padding-top: 1rem;
+            padding-bottom: 0.5rem;
+            color: #57cbf1;
+        }
+
+        .container {
+            max-width: 900px;
+            min-height: 200vh;
+            display: table;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .header {
+            border-bottom: 1px solid teal;
+            padding-right: 0.3rem;
+            text-align: right;
+            background-color: azure;
+            box-shadow: 0 2px 5px azure;
+        }
+
+        .section {
+            padding: 1rem 1rem 0.5rem 0.5rem;
+        }
+
+        .footer {
+            height: 20px;
+            display: table-row;
+            border-top: 1px solid teal;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            text-align: right;
+            background-color: azure;
+            color: #202020;
+        }
+
+        .heading {
+            margin: 0;
+            padding-bottom: 0.5rem;
+            color: #202020;
+            text-shadow: 0 0 3px azure;
+        }
+
+        .text {
+            margin: 0;
+            padding-bottom: 0.5rem;
+            color: azure;
+        }
+
+        .info {
+            padding: 0 0.25rem;
+            background-color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+
+<div class='scroll-page-indicator'></div>
+
+<main class='container'>
+    <header class='header'>
+        <h2 class='heading'>
+            Page Scroll Indicator
+        </h2>
+    </header>
+    <section class='section'>
+        <h2 class='heading'>
+            Info
+        </h2>
+
+        <p class='text'>
+            This plugin sets the scroll bar indicator for the document.
+        </p>
+
+        <h2 class='heading'>
+            Install
+        </h2>
+
+        <pre>
+npm install --save page-scroll-indicator
+        </pre>
+
+        <h2 class='heading'>
+            Use
+        </h2>
+
+        <pre>
+import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
+        </pre>
+
+        <p class='text'>
+            developmentPageScrollIndicator - configuration function. Accepts the configuration.
+        </p>
+
+        <p class='text'>
+            For example:
+        </p>
+
+        <pre>
+developmentPageScrollIndicator({
+    element: '.scroll-top',
+    zIndex: 99,
+    height: 5,
+    opacity: 0.75,
+    backgroundColor: 'blue',
+    boxShadow: 'aqua inset',
+    transition: '200ms ease-in-out',
+});
+        </pre>
+
+        <p class='text'>
+            <span class='info'>element</span> - class of the element to be selected for creating the indicator. Default - class '.scroll-page-indicator'. Type 'string' ('.my-class').
+        </p>
+
+        <p class='text'>
+            <span class='info'>zIndex</span> - z-index of the element. Default - 10000. Type 'string' or 'number' (30 or '456').
+        </p>
+
+        <p class='text'>
+            <span class='info'>height</span> - height of the element. Default - 10px. Type 'string' or 'number' (10 or '18').
+        </p>
+
+        <p class='text'>
+            <span class='info'>opacity</span> - opacity of the element. Default - 1. Type 'string' or 'number' (0.25 or '0.9').
+        </p>
+
+        <p class='text'>
+            <span class='info'>backgroundColor</span> - background-color of the element. Default - aqua. Type 'string' ('red').
+        </p>
+
+        <p class='text'>
+            <span class='info'>boxShadow</span> - box-shadow of the element. Default - 0 0 5px transparent. Type 'string' ('green' or 'green inset').
+        </p>
+
+        <p class='text'>
+            <span class='info'>transition</span> - transition of the element. Default - right 300ms linear. Type 'string' ('350ms easy-in' or '1s easy-in-out').
+        </p>
+
+    </section>
+    <footer class='footer'>
+        (c) Page Scroll Indicator
+    </footer>
+</main>
+
+<script src="page-scroll-indicator.js"></script></body>
+</html>
