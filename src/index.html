@@ -19,11 +19,17 @@
         }
 
         pre {
+            margin: 0;
+            padding-top: 1rem;
+            padding-bottom: 0.5rem;
             color: #57cbf1;
         }
 
         .container {
             max-width: 900px;
+            min-height: 200vh;
+            display: table;
+            width: 100%;
             margin: 20px auto;
         }
 
@@ -40,6 +46,8 @@
         }
 
         .footer {
+            height: 20px;
+            display: table-row;
             border-top: 1px solid teal;
             padding: 0.25rem 0.5rem;
             font-size: 0.8rem;
@@ -90,17 +98,17 @@
             Install
         </h2>
 
-        <p class='text'>
-            NPM:
-        </p>
-
-        <p class='text'>
-            npm install --save page-scroll-indicator
-        </p>
+        <pre>
+npm install --save page-scroll-indicator
+        </pre>
 
         <h2 class='heading'>
             Use
         </h2>
+
+        <pre>
+import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
+        </pre>
 
         <p class='text'>
             developmentPageScrollIndicator - configuration function. Accepts the configuration.
@@ -112,13 +120,13 @@
 
         <pre>
 developmentPageScrollIndicator({
-element: '.scroll-top',
-zIndex: 99,
-height: 5,
-opacity: 0.75,
-backgroundColor: 'blue',
-boxShadow: 'aqua inset',
-transition: '200ms ease-in-out',
+    element: '.scroll-top',
+    zIndex: 99,
+    height: 5,
+    opacity: 0.75,
+    backgroundColor: 'blue',
+    boxShadow: 'aqua inset',
+    transition: '200ms ease-in-out',
 });
         </pre>
 
@@ -149,6 +157,7 @@ transition: '200ms ease-in-out',
         <p class='text'>
             <span class='info'>transition</span> - transition of the element. Default - right 300ms linear. Type 'string' ('350ms easy-in' or '1s easy-in-out').
         </p>
+
     </section>
     <footer class='footer'>
         (c) Page Scroll Indicator
