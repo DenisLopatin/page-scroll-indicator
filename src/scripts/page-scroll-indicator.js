@@ -1,22 +1,3 @@
-/** function getOffset
- * return offset of the element
- * @param { HTMLElement } trackElement - html element
- * @return { number } - offset number
- * */
-
-function getOffset(trackElement) {
-    try {
-        let offset = 0;
-        while (trackElement) {
-            offset += trackElement.offsetTop;
-            trackElement = trackElement.parentElement;
-        }
-        return offset;
-    } catch (err) {
-        throw new Error(err);
-    }
-}
-
 /** return max height of the page
  * @return { number } - max height of the page
  * */
@@ -35,19 +16,34 @@ function getMaxHeightValueOfThePage() {
 /** function coverTheTrackContent
  * the indicator covers the specified content
  * @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
- * @param { HTMLElement } track - target element
+ * @param { HTMLElement } trackElement - target element
+ * @param { number } offsetTop - offset of the element
+ * @param { string } scrollLine - line of the scroll relative element
  * */
 
-function coverTheTrackContent(scrollPageIndicator, track) {
+function coverTheTrackContent(scrollPageIndicator, trackElement, offsetTop, scrollLine) {
     try {
-        const trackElement = document.querySelector(`.${track}`);
-        const documentFullHeight = getMaxHeightValueOfThePage();
-        const offsetTop = getOffset(trackElement);
-        const scrollTop = window.pageYOffset - offsetTop;
-        const elementHeight = trackElement.clientHeight + offsetTop;
-        const finalHeight = documentFullHeight - elementHeight;
-        const result = Math.round((scrollTop * 100) / finalHeight);
-        scrollPageIndicator.style.right = `${String(100 - result)}%`;
+        if (scrollLine === 'top') {
+            const elementHeight = trackElement.clientHeight;
+            const scrollTop = window.pageYOffset - offsetTop;
+            const result = Math.round((scrollTop * 100) / elementHeight);
+            scrollPageIndicator.style.right = `${String(100 - result)}%`;
+        }
+        if (scrollLine === 'bottom') {
+            const documentElementIsTop =
+                document.documentElement.getBoundingClientRect().y;
+            if (documentElementIsTop === 0) {
+                scrollPageIndicator.style.right = '100%';
+                return;
+            }
+            const documentHeight = document.documentElement.clientHeight;
+            const elementHeight = trackElement.clientHeight;
+            const scrollTop = window.pageYOffset - offsetTop + documentHeight;
+            const result = Math.round(
+                (scrollTop * 100) / elementHeight,
+            );
+            scrollPageIndicator.style.right = `${String(100 - result)}%`;
+        }
     } catch (err) {
         throw new Error(err);
     }
@@ -97,16 +93,22 @@ function pageScrollIndicator(config) {
         element.style.transition = `right 
         ${config.transition || '300ms'} linear
         `;
-
-        config.track
-            ? window.addEventListener(
+        if (config.track) {
+            const trackElement = document.querySelector(`.${config.track}`);
+            const offsetTop = trackElement.getBoundingClientRect().top;
+            const scrollLine = config.scrollLine || 'bottom';
+            window.addEventListener(
                 'scroll',
-                coverTheTrackContent.bind(null, element, config.track),
-            )
-            : window.addEventListener(
+                coverTheTrackContent.bind(
+                    null, element, trackElement, offsetTop, scrollLine,
+                ),
+            );
+        } else {
+            window.addEventListener(
                 'scroll',
                 coverTheEntireContent.bind(null, element),
             );
+        }
     } catch (err) {
         throw new Error(err);
     }
