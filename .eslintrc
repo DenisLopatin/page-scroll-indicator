@@ -17,6 +17,7 @@
         "no-console": "warn",
         "linebreak-style": "off",
         "quotes": "off",
+        "no-unused-expressions": "off",
         "max-len": [
             "error",
             {

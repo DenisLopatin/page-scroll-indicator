@@ -1,24 +1,51 @@
-/** function scroll
- *  calculates the scroll height of the document
- *  @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
- *  @param { number } margin - number calculated from fields
+/** function getOffset
+ * return offset of the element
+ * @param { HTMLElement } trackElement - html element
+ * @return { number } - offset number
  * */
 
-function scroll(scrollPageIndicator, margin) {
+function getOffset(trackElement) {
     try {
-        const documentHeightValues = [
-            document.body.scrollHeight,
-            document.documentElement.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.offsetHeight,
-            document.body.clientHeight,
-            document.documentElement.clientHeight,
-        ];
-        const documentHeight = Math.min(...documentHeightValues);
-        const documentFullHeight = Math.max(...documentHeightValues);
-        const finalHeight = documentFullHeight - documentHeight;
-        if (finalHeight === margin) return;
-        const scrollTop = window.pageYOffset;
+        let offset = 0;
+        while (trackElement) {
+            offset += trackElement.offsetTop;
+            trackElement = trackElement.parentElement;
+        }
+        return offset;
+    } catch (err) {
+        throw new Error(err);
+    }
+}
+
+/** return max height of the page
+ * @return { number } - max height of the page
+ * */
+
+function getMaxHeightValueOfThePage() {
+    return Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight,
+    );
+}
+
+/** function coverTheTrackContent
+ * the indicator covers the specified content
+ * @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
+ * @param { HTMLElement } track - target element
+ * */
+
+function coverTheTrackContent(scrollPageIndicator, track) {
+    try {
+        const trackElement = document.querySelector(`.${track}`);
+        const documentFullHeight = getMaxHeightValueOfThePage();
+        const offsetTop = getOffset(trackElement);
+        const scrollTop = window.pageYOffset - offsetTop;
+        const elementHeight = trackElement.clientHeight + offsetTop;
+        const finalHeight = documentFullHeight - elementHeight;
         const result = Math.round((scrollTop * 100) / finalHeight);
         scrollPageIndicator.style.right = `${String(100 - result)}%`;
     } catch (err) {
@@ -26,32 +53,22 @@ function scroll(scrollPageIndicator, margin) {
     }
 }
 
-/** function getMargins
- *  calculates the fields of the body element and all its first-level child elements
- *  @return { number } - returns the maximum value
+/** function coverTheEntireContent
+ *  the indicator covers all the content
+ *  @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
  * */
 
-function getMargins() {
-    const bodyMargins = [
-        Number(getComputedStyle(document.body).marginTop.replace('px', '')),
-        Number(getComputedStyle(document.body).marginBottom.replace('px', '')),
-    ].reduce((acc, el) => {
-        acc += el;
-        return acc;
-    }, 0);
-    const bodyElementsMargins = [
-        ...document.querySelectorAll('body > *'),
-    ].reduce((acc, el) => {
-        const elMarginTop = getComputedStyle(el).marginTop.replace('px', '');
-        const elMarginBottom = getComputedStyle(el).marginBottom.replace(
-            'px',
-            '',
-        );
-        const marginValue = Number(elMarginTop) + Number(elMarginBottom);
-        acc += marginValue;
-        return acc;
-    }, 0);
-    return Math.max(bodyMargins, bodyElementsMargins);
+function coverTheEntireContent(scrollPageIndicator) {
+    try {
+        const documentFullHeight = getMaxHeightValueOfThePage();
+        const documentHeight = document.documentElement.clientHeight;
+        const finalHeight = documentFullHeight - documentHeight;
+        const scrollTop = window.pageYOffset;
+        const result = Math.round((scrollTop * 100) / finalHeight);
+        scrollPageIndicator.style.right = `${String(100 - result)}%`;
+    } catch (err) {
+        throw new Error(err);
+    }
 }
 
 /** function pageScrollIndicator
@@ -66,7 +83,9 @@ function pageScrollIndicator(config) {
         );
         element.style.position = 'fixed';
         element.style.zIndex = `${String(config.zIndex)}` || '10000';
-        element.style.top = '0';
+        config.bottom
+            ? (element.style.bottom = '0')
+            : (element.style.top = '0');
         element.style.left = '0';
         element.style.right = '100%';
         element.style.height = `${String(config.height)}px` || '10px';
@@ -75,25 +94,22 @@ function pageScrollIndicator(config) {
         element.style.boxShadow = `0 0 5px ${
             config.boxShadow || 'transparent'
         }`;
-        element.style.transition = `right ${
-            config.transition || '300ms linear'
-        }`;
+        element.style.transition = `right 
+        ${config.transition || '300ms'} linear
+        `;
 
-        const margins = getMargins();
-
-        window.addEventListener('scroll', scroll.bind(null, element, margins));
+        config.track
+            ? window.addEventListener(
+                'scroll',
+                coverTheTrackContent.bind(null, element, config.track),
+            )
+            : window.addEventListener(
+                'scroll',
+                coverTheEntireContent.bind(null, element),
+            );
     } catch (err) {
         throw new Error(err);
     }
 }
 
-pageScrollIndicator({
-    element: '.scroll-page-indicator',
-    zIndex: 10000,
-    height: 10,
-    opacity: 1,
-    backgroundColor: 'aqua',
-});
-
-window.pageScrollIndicator = pageScrollIndicator;
 export default pageScrollIndicator;

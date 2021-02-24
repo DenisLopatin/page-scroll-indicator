@@ -27,7 +27,6 @@
 
         .container {
             max-width: 900px;
-            min-height: 200vh;
             display: table;
             width: 100%;
             margin: 20px auto;
@@ -43,6 +42,16 @@
 
         .section {
             padding: 1rem 1rem 0.5rem 0.5rem;
+        }
+
+        .empty1 {
+            min-height: 100vh;
+            border: 1px solid red;
+        }
+
+        .empty2 {
+            min-height: 100vh;
+            border: 1px solid blue;
         }
 
         .footer {
@@ -77,7 +86,7 @@
 </head>
 <body>
 
-<div class='scroll-page-indicator'></div>
+<div class='scroll-indicator'></div>
 
 <main class='container'>
     <header class='header'>
@@ -159,6 +168,8 @@ developmentPageScrollIndicator({
         </p>
 
     </section>
+    <div class="empty1"></div>
+    <div class="empty2"></div>
     <footer class='footer'>
         (c) Page Scroll Indicator
     </footer>

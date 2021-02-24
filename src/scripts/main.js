@@ -2,11 +2,15 @@ import '../index.html';
 import pageScrollIndicator from './page-scroll-indicator';
 
 pageScrollIndicator({
-    element: '.scroll-page-indicator',
+    element: '.scroll-indicator',
     zIndex: 10000,
-    height: 10,
-    opacity: 1,
-    backgroundColor: 'aqua',
+    // bottom: true,
+    height: 5,
+    opacity: 0.7,
+    track: 'empty1',
+    backgroundColor: 'green',
+    boxShadow: 'red',
+    transition: '400ms',
 });
 
 window.pageScrollIndicator = pageScrollIndicator;
