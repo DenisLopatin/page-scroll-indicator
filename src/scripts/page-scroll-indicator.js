@@ -1,3 +1,21 @@
+/** put scroll indicator in container
+ * @param { string } elementPut - name of container for scroll
+ * @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
+ * */
+
+function putIn(elementPut, scrollPageIndicator) {
+    const container = document.querySelector(`.${elementPut}`);
+    container.style.position = 'relative';
+    container.style.overflowX = 'hidden';
+    scrollPageIndicator.style.position = 'absolute';
+    container.append(scrollPageIndicator);
+    function getOffset() {
+        const top = container.getBoundingClientRect().top * -1;
+        scrollPageIndicator.style.top = `${top}px`;
+    }
+    window.addEventListener('scroll', getOffset);
+}
+
 /** return max height of the page
  * @return { number } - max height of the page
  * */
@@ -93,6 +111,9 @@ function pageScrollIndicator(config) {
         element.style.transition = `right 
         ${config.transition || '300ms'} linear
         `;
+        if (config.put) {
+            putIn(config.put, element);
+        }
         if (config.track) {
             const trackElement = document.querySelector(`.${config.track}`);
             const offsetTop = trackElement.getBoundingClientRect().top;
