@@ -1,19 +1,18 @@
 /** put scroll indicator in container
- * @param { string } elementPut - name of container for scroll
+ * @param { HTMLElement } target - name of container for scroll
  * @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
  * */
 
-function putIn(elementPut, scrollPageIndicator) {
+function putIn(target, scrollPageIndicator) {
     try {
-        const container = document.querySelector(`.${elementPut}`);
         const getOffset = () => {
-            const top = container.getBoundingClientRect().top * -1;
+            const top = target.getBoundingClientRect().top * -1;
             scrollPageIndicator.style.top = `${top}px`;
         };
-        container.style.position = 'relative';
-        container.style.overflowX = 'hidden';
+        target.style.position = 'relative';
+        target.style.overflowX = 'hidden';
         scrollPageIndicator.style.position = 'absolute';
-        container.append(scrollPageIndicator);
+        target.append(scrollPageIndicator);
         window.addEventListener('scroll', getOffset);
     } catch (err) {
         throw new Error(err);
@@ -104,9 +103,9 @@ function coverTheEntireContent(scrollPageIndicator) {
 
 function pageScrollIndicator(config) {
     try {
-        const element = document.querySelector(
-            config.element || '.scroll-page-indicator',
-        );
+        const target = this;
+        const isForPage = target.tagName === 'HTML' || target.tagName === 'BODY';
+        const element = document.createElement('div');
         element.style.position = 'fixed';
         element.style.zIndex = `${String(config.zIndex)}` || '10000';
         config.bottom
@@ -117,28 +116,22 @@ function pageScrollIndicator(config) {
         element.style.height = `${String(config.height)}px` || '10px';
         element.style.opacity = `${String(config.opacity)}` || '1';
         element.style.backgroundColor = config.backgroundColor || 'aqua';
-        element.style.boxShadow = `0 0 5px ${
-            config.boxShadow || 'transparent'
-        }`;
-        element.style.transition = `right 
-        ${config.transition || '300ms'} linear
-        `;
-        if (config.put) {
-            putIn(config.put, element);
+        element.style.boxShadow = `0 0 5px ${config.boxShadow || 'transparent'}`;
+        element.style.transition = `right ${config.transition || '300ms'} linear`;
+        if (config.put && !isForPage) {
+            putIn(target, element);
         }
-        console.log(this);
-        if (config.track) {
-            // const trackElement = document.querySelector(`.${config.track}`);
-            const trackElement = this;
-            const offsetTop = trackElement.getBoundingClientRect().top + window.pageYOffset;
+        if (!isForPage) {
+            const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
             const scrollLine = config.scrollLine || 'bottom';
             window.addEventListener(
                 'scroll',
                 coverTheTrackContent.bind(
-                    null, element, trackElement, offsetTop, scrollLine,
+                    null, element, target, offsetTop, scrollLine,
                 ),
             );
         } else {
+            document.body.append(element);
             window.addEventListener(
                 'scroll',
                 coverTheEntireContent.bind(null, element),
@@ -147,6 +140,13 @@ function pageScrollIndicator(config) {
     } catch (err) {
         throw new Error(err);
     }
+}
+
+Element.prototype.pageScrollIndicator = pageScrollIndicator;
+if (window.jQuery) {
+    (function jQuery($) {
+        $.pageScrollIndicator = pageScrollIndicator;
+    }(window.jQuery));
 }
 
 export default pageScrollIndicator;

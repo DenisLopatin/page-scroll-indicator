@@ -46,7 +46,7 @@
 
         .example-one,
         .example-two {
-            min-height: 120vh;
+            min-height: 200vh;
             border: 1px solid transparent;
             border-top-color: aquamarine;
             border-bottom-color: aquamarine;
@@ -89,9 +89,6 @@
     </style>
 </head>
 <body>
-
-<div class='scroll-indicator'></div>
-
 <main class='container'>
     <header class='header'>
         <h2 class='heading'>
@@ -104,7 +101,7 @@
         </h2>
 
         <p class='text'>
-            Плагин устанавливает индикатор прокрутки страницы или отдельного элемента на ней.
+            Плагин устанавливает индикатор прокрутки для страницы или для отдельного элемента на ней.
         </p>
 
         <h2 class='heading'>
@@ -132,43 +129,77 @@ import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-i
         </p>
 
         <pre>
-developmentPageScrollIndicator({
-    element: '.scroll-top',
-    zIndex: 99,
-    height: 5,
-    opacity: 0.75,
-    backgroundColor: 'blue',
-    boxShadow: 'aqua inset',
-    transition: '200ms ease-in-out',
+document.documentElement.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
+    scrollLine: 'top',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
 });
         </pre>
 
         <p class='text'>
-            <span class='info'>element</span> - class of the element to be selected for creating the indicator. Default - class '.scroll-page-indicator'. Type 'string' ('.my-class').
+            <span class='info'>element</span> - целевым элементом для которого будет действовать плагин всегда будет являться контекст вызова функции pageScrollIndicator (this). В примере выше это document.documentElement. Если необходимо установаить индикатор прокрутки для всей страницы, то функция pageScrollIndicator должна быть вызвана на document.documentElement или на document.body. Следующий пример эквивалентен предыдущему:
+        </p>
+
+        <pre>
+document.body.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
+    scrollLine: 'top',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+        </pre>
+
+        <p class='text'>
+            Поля, отступы и границы корневого элемента и элемента body не имеют значения для плагина. Он включит их в прокрутку и перезапустит до предыдущего значения в случае перезагрузки страницы.
         </p>
 
         <p class='text'>
-            <span class='info'>zIndex</span> - z-index of the element. Default - 10000. Type 'string' or 'number' (30 or '456').
+            В предложениях ниже под словом "элемент", будет подразумеваться не контекст вызова функции pageScrollIndicator, а созданный плагином элемент "div", который будет исполнять роль индикатора прокрутки.
         </p>
 
         <p class='text'>
-            <span class='info'>height</span> - height of the element. Default - 10px. Type 'string' or 'number' (10 or '18').
+            <span class='info'>zIndex</span> - z-index элемента. По умолчанию - 10000. Тип 'string' или 'number' (30 или '456').
         </p>
 
         <p class='text'>
-            <span class='info'>opacity</span> - opacity of the element. Default - 1. Type 'string' or 'number' (0.25 or '0.9').
+            <span class='info'>height</span> - ширина элемента. По умолчанию - 10px. Тип 'string' или 'number' (10 или '18').
         </p>
 
         <p class='text'>
-            <span class='info'>backgroundColor</span> - background-color of the element. Default - aqua. Type 'string' ('red').
+            <span class='info'>opacity</span> - прозрачность элемента. По умолчанию - 1. Тип 'string' или 'number' (0.25 или '0.9').
         </p>
 
         <p class='text'>
-            <span class='info'>boxShadow</span> - box-shadow of the element. Default - 0 0 5px transparent. Type 'string' ('green' or 'green inset').
+            <span class='info'>backgroundColor</span> - цвет фона элемента. По умолчанию - aqua. Тип 'string' ('red' или '#6242d2').
         </p>
 
         <p class='text'>
-            <span class='info'>transition</span> - transition of the element. Default - right 300ms linear. Type 'string' ('350ms easy-in' or '1s easy-in-out').
+            <span class='info'>boxShadow</span> - тень элемента. По умолчанию - 0 0 5px transparent. Тип 'string' ('green', 'green inset' или '#6242d2').
+        </p>
+
+        <p class='text'>
+            <span class='info'>transition</span> - скорость анимация элемента. По умолчанию - right 300ms linear. Тип 'string' ('350ms' или '1s').
+        </p>
+
+        <p class='text'>
+            <span class='info'>bottom</span> - расположение элемента на странице. Это означает, что нельзя применять это поле в том случае, если вы хотите положить индикатор прокрутки в элемент, на котором он был вызван используя поле "put: true". В этом случае данное поле будет проигнорировано. По умолчанию - false. Тип boolean (true или false).
+        </p>
+
+        <p class='text'>
+            <span class='info'>put</span> - расположить элемент в текущем контексте. Если применить это поле, то индикатор прокрутки будет расположен внутри текущего контекста. По умолчанию - false. Тип boolean (true или false)
+        </p>
+
+        <p class='text'>
+            <span class='info'>scrollLine</span> - настраивает ориентир для индикатора прокрутки. Если задано "top", то плагин подождет, пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, и только после этого индикатор начнет свою работу и закончит ее, когда нижний край элемента будет расположен в верху окна браузера. Если установлено значение "bottom", плагин так-же будет ждать пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, но он выполнят свою работу по мере видимости элемента на странице, и заканчивает выполнение когда нижний край элемента будет в пределах видимости окна браузера. По умолчанию - 'bottom'. Тип 'string' ('top' или 'bottom'). Примеры приведены ниже.
         </p>
     </section>
     <section class="section-second" data-languade="en">
@@ -178,22 +209,11 @@ developmentPageScrollIndicator({
         <h2 class="heading">
             ScrollLine: bottom, put: this container.
         </h2>
-
-        <p class="text">Automatically generated text:</p>
-
-        <p class="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, delectus illo libero officia omnis tenetur voluptatem? Commodi consequuntur dolore explicabo. Accusantium cumque debitis dolores dolorum illo magnam minus reprehenderit sint. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis officiis quasi quia quod? Ab accusamus, asperiores at dolorum eveniet fuga iste nesciunt nobis nulla officia quidem ratione rem, reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aperiam blanditiis consequuntur cupiditate debitis delectus et eveniet excepturi fuga iusto nobis, quae quod quos reiciendis rem rerum voluptas voluptatem?
-        </p>
     </div>
     <div class="example-two">
         <h2 class="heading">
             ScrollLine: top, put: this container.
         </h2>
-        <p class="text">Automatically generated text:</p>
-
-        <p class="text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, delectus illo libero officia omnis tenetur voluptatem? Commodi consequuntur dolore explicabo. Accusantium cumque debitis dolores dolorum illo magnam minus reprehenderit sint. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis officiis quasi quia quod? Ab accusamus, asperiores at dolorum eveniet fuga iste nesciunt nobis nulla officia quidem ratione rem, reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aperiam blanditiis consequuntur cupiditate debitis delectus et eveniet excepturi fuga iusto nobis, quae quod quos reiciendis rem rerum voluptas voluptatem?
-        </p>
     </div>
     <footer class='footer'>
         (c) Page Scroll Indicator

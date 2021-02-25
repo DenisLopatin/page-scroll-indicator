@@ -3,30 +3,35 @@ import pageScrollIndicator from './page-scroll-indicator';
 
 Element.prototype.pageScrollIndicator = pageScrollIndicator;
 
-document.querySelector('.example-two').pageScrollIndicator({
-    element: '.scroll-indicator',
-    zIndex: 10000,
-    // bottom: true,
-    height: 5,
-    opacity: 0.7,
-    track: 'example-two',
-    put: 'example-two',
+document.documentElement.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
     scrollLine: 'top',
-    backgroundColor: 'green',
-    boxShadow: 'red',
-    transition: '400ms',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
 });
 
-// pageScrollIndicator({
-//     element: '.scroll-indicator',
-//     zIndex: 10000,
-//     // bottom: true,
-//     height: 5,
-//     opacity: 0.7,
-//     track: 'example-two',
-//     // put: 'empty1',
-//     scrollLine: 'top',
-//     backgroundColor: 'green',
-//     boxShadow: 'red',
-//     transition: '400ms',
-// });
+document.querySelector('.example-one').pageScrollIndicator({
+    zIndex: 100,
+    height: 10,
+    opacity: 0.5,
+    put: true,
+    scrollLine: 'bottom',
+    backgroundColor: '#6242d2',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+
+document.querySelector('.example-two').pageScrollIndicator({
+    zIndex: 100,
+    height: 5,
+    opacity: 0.7,
+    put: true,
+    scrollLine: 'top',
+    backgroundColor: 'aqua',
+    boxShadow: 'blue',
+    transition: '400ms',
+});
