@@ -4,16 +4,20 @@
  * */
 
 function putIn(elementPut, scrollPageIndicator) {
-    const container = document.querySelector(`.${elementPut}`);
-    container.style.position = 'relative';
-    container.style.overflowX = 'hidden';
-    scrollPageIndicator.style.position = 'absolute';
-    container.append(scrollPageIndicator);
-    function getOffset() {
-        const top = container.getBoundingClientRect().top * -1;
-        scrollPageIndicator.style.top = `${top}px`;
+    try {
+        const container = document.querySelector(`.${elementPut}`);
+        const getOffset = () => {
+            const top = container.getBoundingClientRect().top * -1;
+            scrollPageIndicator.style.top = `${top}px`;
+        };
+        container.style.position = 'relative';
+        container.style.overflowX = 'hidden';
+        scrollPageIndicator.style.position = 'absolute';
+        container.append(scrollPageIndicator);
+        window.addEventListener('scroll', getOffset);
+    } catch (err) {
+        throw new Error(err);
     }
-    window.addEventListener('scroll', getOffset);
 }
 
 /** return max height of the page
@@ -21,14 +25,18 @@ function putIn(elementPut, scrollPageIndicator) {
  * */
 
 function getMaxHeightValueOfThePage() {
-    return Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.clientHeight,
-        document.documentElement.clientHeight,
-    );
+    try {
+        return Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight,
+            document.body.clientHeight,
+            document.documentElement.clientHeight,
+        );
+    } catch (err) {
+        throw new Error(err);
+    }
 }
 
 /** function coverTheTrackContent
@@ -42,15 +50,19 @@ function getMaxHeightValueOfThePage() {
 function coverTheTrackContent(scrollPageIndicator, trackElement, offsetTop, scrollLine) {
     try {
         if (scrollLine === 'top') {
+            const documentHeight = document.documentElement.clientHeight;
+            const fullHeight = window.pageYOffset + documentHeight;
+            if (fullHeight === getMaxHeightValueOfThePage()) {
+                scrollPageIndicator.style.right = '0';
+                return;
+            }
             const elementHeight = trackElement.clientHeight;
             const scrollTop = window.pageYOffset - offsetTop;
             const result = Math.round((scrollTop * 100) / elementHeight);
             scrollPageIndicator.style.right = `${String(100 - result)}%`;
         }
         if (scrollLine === 'bottom') {
-            const documentElementIsTop =
-                document.documentElement.getBoundingClientRect().y;
-            if (documentElementIsTop === 0) {
+            if (!window.pageYOffset) {
                 scrollPageIndicator.style.right = '100%';
                 return;
             }
@@ -114,9 +126,11 @@ function pageScrollIndicator(config) {
         if (config.put) {
             putIn(config.put, element);
         }
+        console.log(this);
         if (config.track) {
-            const trackElement = document.querySelector(`.${config.track}`);
-            const offsetTop = trackElement.getBoundingClientRect().top;
+            // const trackElement = document.querySelector(`.${config.track}`);
+            const trackElement = this;
+            const offsetTop = trackElement.getBoundingClientRect().top + window.pageYOffset;
             const scrollLine = config.scrollLine || 'bottom';
             window.addEventListener(
                 'scroll',

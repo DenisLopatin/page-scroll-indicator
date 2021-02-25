@@ -44,14 +44,18 @@
             padding: 1rem 1rem 0.5rem 0.5rem;
         }
 
-        .empty1 {
-            min-height: 100vh;
-            border: 1px solid red;
+        .example-one,
+        .example-two {
+            min-height: 120vh;
+            border: 1px solid transparent;
+            border-top-color: aquamarine;
+            border-bottom-color: aquamarine;
+            padding: 1rem 1rem 0.5rem 0.5rem;
+            line-height: 1.6;
         }
 
-        .empty2 {
-            min-height: 100vh;
-            border: 1px solid blue;
+        .example-two {
+            border-color: transparent;
         }
 
         .footer {
@@ -170,8 +174,27 @@ developmentPageScrollIndicator({
     <section class="section-second" data-languade="en">
 
     </section>
-    <div class="empty1"></div>
-    <div class="empty2"></div>
+    <div class="example-one">
+        <h2 class="heading">
+            ScrollLine: bottom, put: this container.
+        </h2>
+
+        <p class="text">Automatically generated text:</p>
+
+        <p class="text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, delectus illo libero officia omnis tenetur voluptatem? Commodi consequuntur dolore explicabo. Accusantium cumque debitis dolores dolorum illo magnam minus reprehenderit sint. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis officiis quasi quia quod? Ab accusamus, asperiores at dolorum eveniet fuga iste nesciunt nobis nulla officia quidem ratione rem, reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aperiam blanditiis consequuntur cupiditate debitis delectus et eveniet excepturi fuga iusto nobis, quae quod quos reiciendis rem rerum voluptas voluptatem?
+        </p>
+    </div>
+    <div class="example-two">
+        <h2 class="heading">
+            ScrollLine: top, put: this container.
+        </h2>
+        <p class="text">Automatically generated text:</p>
+
+        <p class="text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, delectus illo libero officia omnis tenetur voluptatem? Commodi consequuntur dolore explicabo. Accusantium cumque debitis dolores dolorum illo magnam minus reprehenderit sint. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis officiis quasi quia quod? Ab accusamus, asperiores at dolorum eveniet fuga iste nesciunt nobis nulla officia quidem ratione rem, reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aperiam blanditiis consequuntur cupiditate debitis delectus et eveniet excepturi fuga iusto nobis, quae quod quos reiciendis rem rerum voluptas voluptatem?
+        </p>
+    </div>
     <footer class='footer'>
         (c) Page Scroll Indicator
     </footer>
