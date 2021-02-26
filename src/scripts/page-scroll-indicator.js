@@ -4,6 +4,6 @@ import development from './development';
 Element.prototype.pageScrollIndicator = development;
 if (window.jQuery) {
     (function jQuery($) {
-        $.pageScrollIndicator = development;
+        $.fn.pageScrollIndicator = development;
     }(window.jQuery));
 }
