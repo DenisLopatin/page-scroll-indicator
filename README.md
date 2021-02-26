@@ -11,7 +11,14 @@ The sample page includes documentation in Russian and examples of using the plug
     npm install --save page-scroll-indicator
     
 ### Using
-    import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
+___ESM:___
+    
+    import "page-scroll-indicator";
+
+___CommonJs:___
+
+    require('page-scroll-indicator');
+
 ___pageScrollIndicator___ - A function that accepts a single argument in the form of a configuration file (an object with settings). For example:
 
     document.documentElement.pageScrollIndicator({
