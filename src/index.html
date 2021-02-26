@@ -44,6 +44,10 @@
             padding: 1rem 1rem 0.5rem 0.5rem;
         }
 
+        [data-languade="en"] {
+            border-bottom: 1px solid azure;
+        }
+
         .example-one,
         .example-two {
             min-height: 200vh;
@@ -62,7 +66,6 @@
             height: 20px;
             display: table-row;
             border-top: 1px solid teal;
-            padding: 0.25rem 0.5rem;
             font-size: 0.8rem;
             text-align: right;
             background-color: azure;
@@ -95,10 +98,13 @@
             Page Scroll Indicator
         </h2>
     </header>
-    <section class="section-second" data-languade="en">
-        <h2 class='heading'>
-            Information
-        </h2>
+    <section class="section" data-languade="en">
+        <hgroup>
+            <h6 class="heading">English</h6>
+            <h2 class='heading'>
+                Information
+            </h2>
+        </hgroup>
 
         <p class='text'>
             The plugin sets the scroll indicator for the page or for a separate element on it.
@@ -142,7 +148,7 @@ document.documentElement.pageScrollIndicator({
         </pre>
 
         <p class='text'>
-            <span class='info'>element</span> -the target element for which the plugin will act will always be the context of the function call pageScrollIndicator (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the pageScrollIndicator function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
+            <span class='info'>element</span> - the target element for which the plugin will act will always be the context of the function call pageScrollIndicator (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the pageScrollIndicator function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
         </p>
 
         <pre>
@@ -159,7 +165,7 @@ document.body.pageScrollIndicator({
         </pre>
 
         <p class='text'>
-            The margins, margins, and borders of the root element and the body element are irrelevant to the plugin. It will include them in the scroll and restart to the previous value if the page is reloaded.
+            The margins and borders of the root element and the body element are irrelevant to the plugin. It will include them in the scroll and restart to the previous value if the page is reloaded.
         </p>
 
         <p class='text'>
@@ -203,9 +209,12 @@ document.body.pageScrollIndicator({
         </p>
     </section>
     <section class='section' data-languade="ru">
-        <h2 class='heading'>
-            Информация
-        </h2>
+        <hgroup>
+            <h6 class="heading">Русский</h6>
+            <h2 class='heading'>
+                Информация
+            </h2>
+        </hgroup>
 
         <p class='text'>
             Плагин устанавливает индикатор прокрутки для страницы или для отдельного элемента на ней.
@@ -306,18 +315,43 @@ document.body.pageScrollIndicator({
         </p>
 
         <p class='text'>
-            <span class='info'>scrollLine</span> - настраивает ориентир для индикатора прокрутки. Если задано "top", то плагин подождет, пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, и только после этого индикатор начнет свою работу и закончит ее, когда нижний край элемента будет расположен в верху окна браузера. Если установлено значение "bottom", плагин так-же будет ждать пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, но он выполнят свою работу по мере видимости элемента на странице, и заканчивает выполнение когда нижний край элемента будет в пределах видимости окна браузера. По умолчанию - 'bottom'. Тип 'string' ('top' или 'bottom'). Примеры приведены ниже.
+            <span class='info'>scrollLine</span> - настраивает ориентир для индикатора прокрутки. Если задано "top", то плагин подождет, пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, и только после этого индикатор начнет свою работу и закончит ее, когда нижний край элемента будет расположен в верху окна браузера. Если установлено значение "bottom", плагин так-же будет ждать пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, но он выполняет свою работу по мере видимости элемента на странице, и заканчивает выполнение когда нижний край элемента будет в пределах видимости окна браузера. По умолчанию - 'bottom'. Тип 'string' ('top' или 'bottom'). Примеры приведены ниже.
         </p>
     </section>
     <div class="example-one">
         <h2 class="heading">
-            ScrollLine: bottom, put: this container.
+            ScrollLine: top, put: this container.
         </h2>
+
+        <pre>
+document.querySelector('.example-one').pageScrollIndicator({
+    zIndex: 100,
+    height: 5,
+    opacity: 0.7,
+    put: true,
+    scrollLine: 'top',
+    backgroundColor: 'aqua',
+    boxShadow: 'blue',
+    transition: '400ms',
+});
+        </pre>
     </div>
     <div class="example-two">
         <h2 class="heading">
-            ScrollLine: top, put: this container.
+            ScrollLine: bottom, put: this container.
         </h2>
+        <pre>
+document.querySelector('.example-two').pageScrollIndicator({
+    zIndex: 100,
+    height: 10,
+    opacity: 0.5,
+    put: true,
+    scrollLine: 'bottom',
+    backgroundColor: '#6242d2',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+        </pre>
     </div>
     <footer class='footer'>
         (c) Page Scroll Indicator
