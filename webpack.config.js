@@ -7,14 +7,15 @@ const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
     entry: {
-        main: [
+        'page-scroll-indicator': [
             '@babel/polyfill',
-            path.resolve(__dirname, 'src/scripts', 'main.js'),
+            path.resolve(__dirname, 'src/scripts', 'page-scroll-indicator.js'),
         ],
+        example: path.resolve(__dirname, 'src/scripts', 'for-example.js'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'page-scroll-indicator.js',
+        filename: '[name].js',
         publicPath: '',
     },
     target: isDev ? 'web' : 'browserslist',

@@ -11,10 +11,10 @@ The sample page includes documentation in Russian and examples of using the plug
     npm install --save page-scroll-indicator
     
 ### Using
-    import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
+    import development from "page-scroll-indicator/src/scripts/page-scroll-indicator";
 ___pageScrollIndicator___ - A function that accepts a single argument in the form of a configuration file (an object with settings). For example:
 
-    document.documentElement.pageScrollIndicator({
+    document.documentElement.development({
         zIndex: 100,
         height: 8,
         opacity: 1,
@@ -25,9 +25,9 @@ ___pageScrollIndicator___ - A function that accepts a single argument in the for
         transition: '200ms',
     });
     
-element - the target element for which the plugin will act will always be the context of the function call pageScrollIndicator (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the pageScrollIndicator function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
+element - the target element for which the plugin will act will always be the context of the function call development (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the development function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
 
-    document.body.pageScrollIndicator({
+    document.body.development({
         zIndex: 100,
         height: 8,
         opacity: 1,
@@ -40,7 +40,7 @@ element - the target element for which the plugin will act will always be the co
 
 The margins and borders of the root element and the body element are irrelevant to the plugin. It will include them in the scroll and restart to the previous value if the page is reloaded.
 
-In the sentences below, the word "element" will not mean the context of the pageScrollIndicator function call, but the "div" element created by the plugin, which will act as a scroll indicator.
+In the sentences below, the word "element" will not mean the context of the development function call, but the "div" element created by the plugin, which will act as a scroll indicator.
 
 * zIndex - z-index of element. Default - 10000. Type 'string' or 'number' (30 or '456').
 * height - element width. Default - 10px. Type 'string' or 'number' (10 or '18').

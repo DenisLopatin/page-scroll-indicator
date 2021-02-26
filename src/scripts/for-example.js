@@ -1,8 +1,3 @@
-import '../index.html';
-import pageScrollIndicator from './page-scroll-indicator';
-
-Element.prototype.pageScrollIndicator = pageScrollIndicator;
-
 document.documentElement.pageScrollIndicator({
     zIndex: 100,
     height: 8,

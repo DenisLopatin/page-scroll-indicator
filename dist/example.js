@@ -1,0 +1,2 @@
+document.documentElement.pageScrollIndicator({zIndex:100,height:8,opacity:1,bottom:!0,scrollLine:"top",backgroundColor:"pink",boxShadow:"white",transition:"200ms"}),document.querySelector(".example-one").pageScrollIndicator({zIndex:100,height:5,opacity:.7,put:!0,scrollLine:"top",backgroundColor:"aqua",boxShadow:"blue",transition:"400ms"}),document.querySelector(".example-two").pageScrollIndicator({zIndex:100,height:10,opacity:.5,put:!0,scrollLine:"bottom",backgroundColor:"#6242d2",boxShadow:"white",transition:"200ms"});
+//# sourceMappingURL=example.js.map
