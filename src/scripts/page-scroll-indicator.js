@@ -12,7 +12,7 @@ function putIn(target, scrollPageIndicator) {
         target.style.position = 'relative';
         target.style.overflowX = 'hidden';
         scrollPageIndicator.style.position = 'absolute';
-        target.append(scrollPageIndicator);
+        target.appendChild(scrollPageIndicator);
         window.addEventListener('scroll', getOffset);
     } catch (err) {
         throw new Error(err);
@@ -131,7 +131,7 @@ function pageScrollIndicator(config) {
                 ),
             );
         } else {
-            document.body.append(element);
+            document.body.appendChild(element);
             window.addEventListener(
                 'scroll',
                 coverTheEntireContent.bind(null, element),
