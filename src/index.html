@@ -95,6 +95,113 @@
             Page Scroll Indicator
         </h2>
     </header>
+    <section class="section-second" data-languade="en">
+        <h2 class='heading'>
+            Information
+        </h2>
+
+        <p class='text'>
+            The plugin sets the scroll indicator for the page or for a separate element on it.
+        </p>
+
+        <h2 class='heading'>
+            Installation
+        </h2>
+
+        <pre>
+npm install --save page-scroll-indicator
+        </pre>
+
+        <h2 class='heading'>
+            Using
+        </h2>
+
+        <pre>
+import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
+        </pre>
+
+        <p class='text'>
+            pageScrollIndicator - A function that accepts a single argument in the form of a configuration file (an object with settings).
+        </p>
+
+        <p class='text'>
+            For example:
+        </p>
+
+        <pre>
+document.documentElement.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
+    scrollLine: 'top',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+        </pre>
+
+        <p class='text'>
+            <span class='info'>element</span> -the target element for which the plugin will act will always be the context of the function call pageScrollIndicator (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the pageScrollIndicator function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
+        </p>
+
+        <pre>
+document.body.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
+    scrollLine: 'top',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+        </pre>
+
+        <p class='text'>
+            The margins, margins, and borders of the root element and the body element are irrelevant to the plugin. It will include them in the scroll and restart to the previous value if the page is reloaded.
+        </p>
+
+        <p class='text'>
+            In the sentences below, the word "element" will not mean the context of the pageScrollIndicator function call, but the "div" element created by the plugin, which will act as a scroll indicator.
+        </p>
+
+        <p class='text'>
+            <span class='info'>zIndex</span> - z-index of element. Default - 10000. Type 'string' or 'number' (30 or '456').
+        </p>
+
+        <p class='text'>
+            <span class='info'>height</span> - element width. Default - 10px. Type 'string' or 'number' (10 or '18').
+        </p>
+
+        <p class='text'>
+            <span class='info'>opacity</span> - the transparency of the element. Default - 1. Type 'string' or 'number' (0.25 or '0.9').
+        </p>
+
+        <p class='text'>
+            <span class='info'>backgroundColor</span> - the background color of an element. Default - aqua. Type 'string' ('red' or '#6242d2').
+        </p>
+
+        <p class='text'>
+            <span class='info'>boxShadow</span> - the shadow element. Default - 0 0 5px transparent. Type 'string' ('green', 'green inset' or '#6242d2').
+        </p>
+
+        <p class='text'>
+            <span class='info'>transition</span> - speed animation of the element. Default - right 300ms linear. Type 'string' ('350ms' or '1s').
+        </p>
+
+        <p class='text'>
+            <span class='info'>bottom</span> - location of the element on the page. This means that you cannot apply this field if you want to put the scroll indicator in the element on which it was called using the "put: true" field. In this case, this field will be ignored. Default - false. Type boolean (true or false).
+        </p>
+
+        <p class='text'>
+            <span class='info'>put</span> - position the element in the current context. If you apply this field, the scroll indicator will be located inside the current context. Default - false. Type boolean (true or false)
+        </p>
+
+        <p class='text'>
+            <span class='info'>scrollLine</span> - configures the reference point for the scroll indicator. If "top" is set, the plugin will wait until the upper edge of the element (the parent element of the indicator, this) is located at the top of the browser window, and only then the indicator will start its work and finish it when the lower edge of the element is located at the top of the browser window. If the value is set to "bottom", the plugin will also wait until the upper edge of the element (the parent element of the indicator, this) is located at the top of the browser window, but it will perform its work as the element is visible on the page, and finishes execution when the lower edge of the element is within the view of the browser window. Default - 'bottom'. Type 'string' ('top' or 'bottom'). Examples are given below.
+        </p>
+    </section>
     <section class='section' data-languade="ru">
         <h2 class='heading'>
             Информация
@@ -201,9 +308,6 @@ document.body.pageScrollIndicator({
         <p class='text'>
             <span class='info'>scrollLine</span> - настраивает ориентир для индикатора прокрутки. Если задано "top", то плагин подождет, пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, и только после этого индикатор начнет свою работу и закончит ее, когда нижний край элемента будет расположен в верху окна браузера. Если установлено значение "bottom", плагин так-же будет ждать пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, но он выполнят свою работу по мере видимости элемента на странице, и заканчивает выполнение когда нижний край элемента будет в пределах видимости окна браузера. По умолчанию - 'bottom'. Тип 'string' ('top' или 'bottom'). Примеры приведены ниже.
         </p>
-    </section>
-    <section class="section-second" data-languade="en">
-
     </section>
     <div class="example-one">
         <h2 class="heading">
