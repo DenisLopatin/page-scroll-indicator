@@ -25,7 +25,7 @@ ___pageScrollIndicator___ - A function that accepts a single argument in the for
         transition: '200ms',
     });
     
-* element - the target element for which the plugin will act will always be the context of the function call pageScrollIndicator (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the pageScrollIndicator function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
+element - the target element for which the plugin will act will always be the context of the function call pageScrollIndicator (this). In the example above, this is document.documentElement. If you need to set the scroll indicator for the entire page, then the pageScrollIndicator function should be called on document.documentElement or on document.body. The following example is equivalent to the previous one:
 
     document.body.pageScrollIndicator({
         zIndex: 100,
