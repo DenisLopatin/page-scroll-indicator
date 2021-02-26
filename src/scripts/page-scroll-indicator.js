@@ -1,9 +1,8 @@
 import '../index.html';
+import jQuery from 'jquery';
 import development from './development';
 
 Element.prototype.pageScrollIndicator = development;
-/* eslint-disable no-undef */
-if ($('document') || jQuery('document')) {
-    jQuery.fn.pageScrollIndicator = development;
+(function jq($) {
     $.fn.pageScrollIndicator = development;
-}
+}(jQuery));
