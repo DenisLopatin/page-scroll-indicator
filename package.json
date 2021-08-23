@@ -1,6 +1,6 @@
 {
     "name": "page-scroll-indicator",
-    "version": "3.0.0",
+    "version": "3.0.2",
     "description": "Page scroll indicator for the site",
     "main": "src/scripts/main.js",
     "scripts": {
@@ -24,7 +24,10 @@
     "keywords": [
         "page-scroll-indicator",
         "progress-bar",
-        "js"
+        "scroll-bar",
+        "indicator",
+        "scroll",
+        "progress"
     ],
     "author": "Denis Lopatin [www.denis-lopatin@yandex.ru, https://github.com/DenisLopatin]",
     "license": "ISC",
