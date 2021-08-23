@@ -9,18 +9,18 @@ module.exports = {
     entry: {
         main: [
             '@babel/polyfill',
-            path.resolve(__dirname, 'src/scripts', 'main.js'),
+            path.resolve(__dirname, 'src', 'development.js'),
         ],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'page-scroll-indicator.js',
+        filename: 'main.js',
         publicPath: '',
     },
     target: isDev ? 'web' : 'browserslist',
     devtool: 'source-map',
     devServer: {
-        port: 9000,
+        port: 8000,
         hot: true,
         open: 'firefox',
     },
@@ -29,6 +29,10 @@ module.exports = {
             {
                 test: /\.html$/i,
                 loader: 'html-loader',
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
             },
             {
                 test: /\.m?js$/,
@@ -47,6 +51,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'en-index.html'),
+            filename: 'en-index.html',
         }),
     ],
     optimization: {

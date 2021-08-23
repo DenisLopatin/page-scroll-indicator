@@ -6,91 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Example Page Scroll Indicator</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-            background-color: #202020;
-        }
-
-        main {
-            display: block;
-            box-shadow: 0 0 4px aquamarine;
-        }
-
-        pre {
-            margin: 0;
-            padding-top: 1rem;
-            padding-bottom: 0.5rem;
-            color: #57cbf1;
-        }
-
-        .container {
-            max-width: 900px;
-            display: table;
-            width: 100%;
-            margin: 20px auto;
-        }
-
-        .header {
-            border-bottom: 1px solid teal;
-            padding-right: 0.3rem;
-            text-align: right;
-            background-color: azure;
-            box-shadow: 0 2px 5px azure;
-        }
-
-        .section {
-            padding: 1rem 1rem 0.5rem 0.5rem;
-        }
-
-        .example-one,
-        .example-two {
-            min-height: 200vh;
-            border: 1px solid transparent;
-            border-top-color: aquamarine;
-            border-bottom-color: aquamarine;
-            padding: 1rem 1rem 0.5rem 0.5rem;
-            line-height: 1.6;
-        }
-
-        .example-two {
-            border-color: transparent;
-        }
-
-        .footer {
-            height: 20px;
-            display: table-row;
-            border-top: 1px solid teal;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.8rem;
-            text-align: right;
-            background-color: azure;
-            color: #202020;
-        }
-
-        .heading {
-            margin: 0;
-            padding-bottom: 0.5rem;
-            color: #202020;
-            text-shadow: 0 0 3px azure;
-        }
-
-        .text {
-            margin: 0;
-            padding-bottom: 0.5rem;
-            color: azure;
-        }
-
-        .info {
-            padding: 0 0.25rem;
-            background-color: dodgerblue;
-        }
-    </style>
 </head>
 <body>
 <main class='container'>
     <header class='header'>
+        <div class="social">
+            <a class="link mr-1" href="https://github.com/DenisLopatin/page-scroll-indicator" target="_blank">GITHUB</a>
+            <a class="link" href="https://www.npmjs.com/package/page-scroll-indicator" target="_blank">NPM</a>
+        </div>
         <h2 class='heading'>
             Page Scroll Indicator
         </h2>
@@ -101,34 +24,108 @@
         </h2>
 
         <p class='text'>
-            Плагин устанавливает индикатор прокрутки для страницы или для отдельного элемента на ней.
+            Плагин устанавливает индикатор прокрутки для страницы или для отдельного элемента на ней. Использование этого плагина дает возможность
+            пользователям вашего сайта отслеживать количество оставшегося контента на целевой странице или в отдельной статье, расположенной на
+            целевой странице.
         </p>
+
+        <p class="text">
+            В таблице ниже отображена поддержка браузерами для плагина. Зеленый цвет - полная поддержка. Красный цвет - отсутствие поддержки.
+            Оранжевый - частичная поддержка.
+        </p>
+
+        <div class="danger">
+            Частичная поддержка гарантирует работу плагина только в том случае, если вы используете babel в своем проекте. Также вам понадобится
+            включить необходимые браузеры в browserslist.
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table">
+                <caption class="caption">
+                    Поддержка браузерами
+                </caption>
+                <thead class="thead">
+                <tr>
+                    <td>IE</td>
+                    <td>Edge</td>
+                    <td>Firefox</td>
+                    <td>Chrome</td>
+                    <td>Safari</td>
+                    <td>Opera</td>
+                    <td>Safari on iOS</td>
+                    <td>Opera Mini</td>
+                    <td>Android Browser</td>
+                    <td>Opera mobile</td>
+                    <td>Chrome for Android</td>
+                    <td>Firefox for Android</td>
+                    <td>UC Browser for Android</td>
+                    <td>Samsung Internet</td>
+                    <td>QQ Browser</td>
+                    <td>Baidu Browser</td>
+                    <td>KaiOS Browser</td>
+                </tr>
+                </thead>
+                <tbody class="tbody">
+                <tr>
+                    <td class="orange">10+</td>
+                    <td class="green">79 - 91+</td>
+                    <td class="green">75 - 90+</td>
+                    <td class="green">79 - 91+</td>
+                    <td class="green">13.1 - 14+</td>
+                    <td class="green">66 - 77+</td>
+                    <td class="green">13.4 - 14.4</td>
+                    <td class="red">No support</td>
+                    <td class="green">92</td>
+                    <td class="green">64</td>
+                    <td class="green">92</td>
+                    <td class="green">90</td>
+                    <td class="orange">12.12</td>
+                    <td class="green">12.0 - 13.0+</td>
+                    <td class="orange">10.4</td>
+                    <td class="orange">7.12</td>
+                    <td class="orange">2.5</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h2 class='heading'>
             Установка
         </h2>
 
-        <pre>
+        <pre><code>
 npm install --save page-scroll-indicator
-        </pre>
+        </code></pre>
 
         <h2 class='heading'>
             Использование
         </h2>
 
-        <pre>
-import pageScrollIndicator from "page-scroll-indicator/src/scripts/page-scroll-indicator";
-        </pre>
+        <h3 class="heading">
+            ESM:
+        </h3>
+
+        <pre><code>
+import 'page-scroll-indicator';
+        </code></pre>
+
+        <h3 class="heading">
+            CommonJS:
+        </h3>
+
+        <pre><code>
+require('page-scroll-indicator');
+        </code></pre>
 
         <p class='text'>
-            pageScrollIndicator - Функция, которая принимает единственный аргумент в виде конфигурационного файла (объекта с настройками).
+            <span class='info'>pageScrollIndicator</span> - Функция, которая принимает единственный аргумент в виде конфигурационного файла (объекта с настройками).
         </p>
 
         <p class='text'>
             Для примера:
         </p>
 
-        <pre>
+        <pre><code>
 document.documentElement.pageScrollIndicator({
     zIndex: 100,
     height: 8,
@@ -139,13 +136,16 @@ document.documentElement.pageScrollIndicator({
     boxShadow: 'white',
     transition: '200ms',
 });
-        </pre>
+        </code></pre>
 
         <p class='text'>
-            <span class='info'>element</span> - целевым элементом для которого будет действовать плагин всегда будет являться контекст вызова функции pageScrollIndicator (this). В примере выше это document.documentElement. Если необходимо установаить индикатор прокрутки для всей страницы, то функция pageScrollIndicator должна быть вызвана на document.documentElement или на document.body. Следующий пример эквивалентен предыдущему:
+            <span class='info'>element</span> - целевым элементом для которого будет действовать плагин всегда будет являться контекст
+            вызова функции pageScrollIndicator (this). В примере выше это document.documentElement. Если необходимо установить индикатор
+            прокрутки для всей страницы, то функция pageScrollIndicator должна быть вызвана на document.documentElement или на document.body.
+            Следующий пример эквивалентен предыдущему:
         </p>
 
-        <pre>
+        <pre><code>
 document.body.pageScrollIndicator({
     zIndex: 100,
     height: 8,
@@ -156,64 +156,217 @@ document.body.pageScrollIndicator({
     boxShadow: 'white',
     transition: '200ms',
 });
-        </pre>
+        </code></pre>
+
+        <p class="text">
+            Вы можете работать с плагином через jQuery. Инициализируйте плагин на элементе с помощью JavaScript:
+        </p>
+
+        <pre><code>
+document.querySelector('.element').pageScrollIndicator({
+    zIndex: 10,
+    height: 7.5,
+    opacity: 1,
+    scrollLine: 'top',
+    backgroundColor: 'blue',
+    boxShadow: 'gray',
+    transition: '220ms',
+});
+        </code></pre>
+
+        <p class="text">
+            Или, если вы используете библиотеку jQuery:
+        </p>
+
+        <pre><code>
+$('.element').pageScrollIndicator({
+    zIndex: 10,
+    height: 7.5,
+    opacity: 1,
+    scrollLine: 'top',
+    backgroundColor: 'blue',
+    boxShadow: 'gray',
+    transition: '220ms',
+});
+        </code></pre>
 
         <p class='text'>
-            Поля, отступы и границы корневого элемента и элемента body не имеют значения для плагина. Он включит их в прокрутку и перезапустит до предыдущего значения в случае перезагрузки страницы.
+            Поля, отступы и границы корневого элемента, элемента body и дочерних по отношению к ним элементов не имеют значения для плагина.
+            Он включит их в прокрутку и перезапустит до предыдущего значения в случае перезагрузки страницы.
         </p>
 
         <p class='text'>
-            В предложениях ниже под словом "элемент", будет подразумеваться не контекст вызова функции pageScrollIndicator, а созданный плагином элемент "div", который будет исполнять роль индикатора прокрутки.
+            Плагин продолжит работать после изменения размера окна браузера. Он пересчитает все значения и выдаст корректный результат прокрутки
+            содержимого в режиме реального времени без перезагрузки страницы. Таким образом пользователь не будет введен в заблуждение если
+            изменится размер окна. Один из случаев, где это может произойти - смена ориентации экрана мобильного устройства, когда из книжной
+            она превращается в альбомную. Также это могут быть различные взаимодействия с DOM элементами, добавление, удаление и модификация
+            последних.
         </p>
 
         <p class='text'>
-            <span class='info'>zIndex</span> - z-index элемента. По умолчанию - 10000. Тип 'string' или 'number' (30 или '456').
+            Плагин умеет работать с абсолютно позиционированными элементами.
+        </p>
+
+        <div class="danger">
+            Каждый вызов плагина на элементе создает один обработчик scroll на документе. Постарайтесь избегать множественного создания
+            индикаторов прокрутки. В основном для сайта требуется только один индикатор для отслеживания всей страницы в целом или
+            основной статьи в частности. Плагин использует экспериментальное свойство CSS will-change, для указания браузеру о двух
+            постоянно изменяемых свойствах на элементе - top и right. Плагин имеет ряд шагов выхода из обработчика в случае охвата им всего
+            отслеживаемого контента, что-бы не модифицировать элемент значениями top и right, когда вы его прокрутите. Все вызовы будут происходить
+            в функции обратного вызова requestAnimationFrame.
+        </div>
+
+        <p class='text'>
+            В предложениях ниже под словом "элемент", будет подразумеваться не контекст вызова функции pageScrollIndicator, а созданный
+            плагином элемент "div", который будет исполнять роль индикатора прокрутки.
         </p>
 
         <p class='text'>
-            <span class='info'>height</span> - ширина элемента. По умолчанию - 10px. Тип 'string' или 'number' (10 или '18').
+            <span class='info'>zIndex</span> Смещение элемента по оси Z. Значение по умолчанию - 10000. Тип <span class="type">string</span> или
+            <span class="type">number</span>. Допускаются любые значения, даже отрицательные. Вы должны иметь в виду, что индикатор прокрутки
+            в контексте наложения должен иметь больший приоритет, чем у прочих элементов расположенных в блоке, поверх которого он располагается.
+            Допускаются любые значения -X до +X. Для примера: 10, '10000' или -5000.
         </p>
 
         <p class='text'>
-            <span class='info'>opacity</span> - прозрачность элемента. По умолчанию - 1. Тип 'string' или 'number' (0.25 или '0.9').
+            <span class='info'>height</span> Ширина элемента. Значение по умолчанию - 10px. Тип <span class="type">string</span> или
+            <span class="type">number</span>. Допускаются любые значения кроме отрицательных. Не делайте индикатор слишком широким.
+            Для примера: 15, '7' или 8.5.
         </p>
 
         <p class='text'>
-            <span class='info'>backgroundColor</span> - цвет фона элемента. По умолчанию - aqua. Тип 'string' ('red' или '#6242d2').
+            <span class='info'>opacity</span> Прозрачность элемента. Значение по умолчанию - 1. Тип <span class="type">string</span> или
+            <span class="type">number</span>. Допускаются любые значения 0 до 1. Для примера: 1, '0.6' или 0.253.
         </p>
 
         <p class='text'>
-            <span class='info'>boxShadow</span> - тень элемента. По умолчанию - 0 0 5px transparent. Тип 'string' ('green', 'green inset' или '#6242d2').
+            <span class='info'>backgroundColor</span> Цвет фона элемента. Значение по умолчанию - aqua. Тип <span class="type">string</span>.
+            Допускаются любые корректные значения цветовых оттенков. Для примера: 'red', 'green' или #6242d2.
         </p>
 
         <p class='text'>
-            <span class='info'>transition</span> - скорость анимация элемента. По умолчанию - right 300ms linear. Тип 'string' ('350ms' или '1s').
+            <span class='info'>boxShadow</span> Тень элемента. Значение по умолчанию - 0 0 5px transparent. Тип <span class="type">string</span>.
+            Допускаются любые корректные значения цветовых оттенков. Для примера: 'green', 'green inset' или '#6242d2'. Вы можете манипулировать
+            только цветом отбрасываемой тени. При необходимости можете указать внутреннюю или наружную тень.
         </p>
 
         <p class='text'>
-            <span class='info'>bottom</span> - расположение элемента на странице. Это означает, что нельзя применять это поле в том случае, если вы хотите положить индикатор прокрутки в элемент, на котором он был вызван используя поле "put: true". В этом случае данное поле будет проигнорировано. По умолчанию - false. Тип boolean (true или false).
+            <span class='info'>transition</span> Скорость анимации элемента. Значение по умолчанию - right 300ms linear.
+            Тип <span class="type">string</span>. Допускаются следующие значения: '350ms' или '1s'. Вы можете управлять только скоростью анимации.
         </p>
 
         <p class='text'>
-            <span class='info'>put</span> - расположить элемент в текущем контексте. Если применить это поле, то индикатор прокрутки будет расположен внутри текущего контекста. По умолчанию - false. Тип boolean (true или false)
+            <span class='info'>bottom</span> Расположение элемента на странице. Можно использовать только при отслеживании всего контента на сайте.
+            Это означает, что данное поле будет проигнорировано, если вы инициализируете настройки на каких либо элементах отличных от HTML или BODY.
+            Значение по умолчанию - false. Тип <span class="type">boolean</span>. Допускаются следующие значения: true или false.
         </p>
 
         <p class='text'>
-            <span class='info'>scrollLine</span> - настраивает ориентир для индикатора прокрутки. Если задано "top", то плагин подождет, пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, и только после этого индикатор начнет свою работу и закончит ее, когда нижний край элемента будет расположен в верху окна браузера. Если установлено значение "bottom", плагин так-же будет ждать пока верхний край элемента (родительского элемента индикатора, this) будет расположен в верху окна браузера, но он выполнят свою работу по мере видимости элемента на странице, и заканчивает выполнение когда нижний край элемента будет в пределах видимости окна браузера. По умолчанию - 'bottom'. Тип 'string' ('top' или 'bottom'). Примеры приведены ниже.
+            <span class='info'>scrollLine</span> - настраивает ориентир для индикатора прокрутки. Если задано "top", то плагин подождет,
+            пока верхний край элемента будет расположен вверху окна браузера, и только после этого индикатор начнет свою работу и закончит ее,
+            когда нижний край элемента будет расположен вверху окна браузера. Если установлено значение "bottom", то плагин уже не будет ждать пока
+            верхний край элемента будет расположен вверху окна браузера, он выполняет свою работу сразу по мере видимости элемента на странице,
+            и заканчивает выполнение когда нижний край элемента будет в пределах видимости окна браузера. Значение не будет иметь никакого эффекта,
+            если установлено на элементах HTML или BODY. Значение по умолчанию - bottom.
+            Тип <span class="type">string</span>. Допускаются следующие значения: 'top' или 'bottom'. Примеры приведены ниже.
         </p>
+
+        <div class="danger">
+            Плагин не работает с прокручиваемыми элементами, то есть с теми у которых установлено свойство overflow в значение scroll или auto.
+            Плагин не работает с элементами у которых свойство position задано в значении sticky или fixed.
+            В браузерах firefox можно заметить небольшое подергивание индикатора, когда он отслеживает содержимое контента в элементе при
+            значении scrollLine установленного в bottom. Если вы заметили некорректную работу плагина с какими либо элементами при определенных
+            обстоятельствах, пожалуйста сообщите об этом:
+            <a class="link" href="https://github.com/DenisLopatin/page-scroll-indicator/issues">issues</a>.
+        </div>
+
+        <p class="text">
+            Вы можете инициализировать плагин на элементе не передавая объект с настройками. В этом случае будут применены значения по умолчанию.
+            Следующие два вызова эквивалентны:
+        </p>
+
+        <pre><code>
+$('.element').pageScrollIndicator({
+    zIndex: 10000,
+    height: 10,
+    opacity: 1,
+    scrollLine: 'top',
+    backgroundColor: 'aqua',
+    boxShadow: 'transparent',
+    transition: '300ms',
+    scrollLine: 'bottom'
+});
+        </code></pre>
+
+        <p class="text">
+            Тоже самое, что и:
+        </p>
+
+        <pre><code>
+$('.element').pageScrollIndicator();
+        </code></pre>
+
     </section>
     <section class="section-second" data-languade="en">
 
     </section>
     <div class="example-one">
         <h2 class="heading">
-            ScrollLine: bottom, put: this container.
+            ScrollLine: bottom
         </h2>
+
+        <p class="text">
+            Поведение индикатора прокрутки страницы при ScrollLine установленным как bottom. В данном случае индикатор начинает работать сразу
+            после того, как отслеживаемый элемент находится в зоне видимости пользователя.
+        </p>
+
+        <p class="text">
+            Как только нижний край отслеживаемого элемента станет виден на экране пользователя, индикатор прокрутки отобразится в значении 100%.
+        </p>
     </div>
     <div class="example-two">
         <h2 class="heading">
-            ScrollLine: top, put: this container.
+            ScrollLine: top
         </h2>
+
+        <p class="text">
+            Поведение индикатора прокрутки страницы при ScrollLine установленным как top. В данном случае индикатор начинает работать только
+            после того, как отслеживаемый элемент соприкоснется с верхним краем окна браузера.
+        </p>
+
+        <p class="text">
+            Как только нижний край отслеживаемого элемента соприкоснется с верхним краем окна браузера, индикатор прокрутки отобразится в
+            значении 100%.
+        </p>
+    </div>
+    <div class="example-three">
+        <h2 class="heading">
+            ScrollLine: bottom again
+        </h2>
+
+        <p class="text">
+            Текущему элементу заданы отступы (padding). Как видите они не влияют на работу индикатора прокрутки, он успешно справляется с этим.
+            Поля (margin) тоже не будут создавать проблем для работы плагина.
+        </p>
+    </div>
+    <div class="example-four">
+        <h2 class="heading">
+            ScrollLine: top again
+        </h2>
+
+        <p class="text">
+            Текущему элементу задана граница в 20px. В этом случае работа индикатора прокрутки останется стабильна. Плагин высчитает толщину
+            верхней границы и будет использовать последнюю в своих расчетах. Боковые границы никак не влияют на работу индикатора. Это будет работать
+            не зависимо от того, где именно были применены стиля для создания границы, непосредственно в HTML теге или CSS файле.
+        </p>
+
+        <p class="text">
+            Обратите внимание на специфику работы плагина при заданном значении ScrollLine установленным как top, если он является последним
+            элементом на странице. Как вы помните, при ScrollLine: top, что-бы индикатор завершил свою работу, нижний край элемента должен соприкоснуться
+            с верхним краем окна браузера. В случае, если элемент будет замыкать страницу этого не произойдет. Плагин предусматривает специальную
+            проверку на такой случай и досрочно указывает на окончание прокрутки. Вы можете заметить, как индикатор в данном блоке резко перекатывается
+            с середины до конца правого края в момент, когда зафиксирован конец текущего документа.
+        </p>
     </div>
     <footer class='footer'>
         (c) Page Scroll Indicator

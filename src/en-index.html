@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Page Scroll Indicator</title>
+</head>
+<body>
+<main class='container'>
+    <header class='header'>
+        <div class="social">
+            <a class="link mr-1" href="https://github.com/DenisLopatin/page-scroll-indicator" target="_blank">GITHUB</a>
+            <a class="link" href="https://www.npmjs.com/package/page-scroll-indicator" target="_blank">NPM</a>
+        </div>
+        <h2 class='heading'>
+            Page Scroll Indicator
+        </h2>
+    </header>
+    <section class='section' data-languade="ru">
+        <h2 class='heading'>
+            Information
+        </h2>
+
+        <p class='text'>
+            The plugin configures the scroll indicator for a page or article. Using this plugin allows your website users to track the number of
+            content remaining on the homepage or in a standalone article.
+        </p>
+
+        <p class="text">
+            The table below shows the browser support for the plugin. Green - full support. Red - lack of support. Orange - partial support.
+        </p>
+
+        <div class="danger">
+            Partial support only guarantees that the plugin works if you use babel in your project. You will also need to enable the required
+            browsers in browserslist.
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table">
+                <caption class="caption">
+                    Browser support
+                </caption>
+                <thead class="thead">
+                <tr>
+                    <td>IE</td>
+                    <td>Edge</td>
+                    <td>Firefox</td>
+                    <td>Chrome</td>
+                    <td>Safari</td>
+                    <td>Opera</td>
+                    <td>Safari on iOS</td>
+                    <td>Opera Mini</td>
+                    <td>Android Browser</td>
+                    <td>Opera mobile</td>
+                    <td>Chrome for Android</td>
+                    <td>Firefox for Android</td>
+                    <td>UC Browser for Android</td>
+                    <td>Samsung Internet</td>
+                    <td>QQ Browser</td>
+                    <td>Baidu Browser</td>
+                    <td>KaiOS Browser</td>
+                </tr>
+                </thead>
+                <tbody class="tbody">
+                <tr>
+                    <td class="orange">10+</td>
+                    <td class="green">79 - 91+</td>
+                    <td class="green">75 - 90+</td>
+                    <td class="green">79 - 91+</td>
+                    <td class="green">13.1 - 14+</td>
+                    <td class="green">66 - 77+</td>
+                    <td class="green">13.4 - 14.4</td>
+                    <td class="red">No support</td>
+                    <td class="green">92</td>
+                    <td class="green">64</td>
+                    <td class="green">92</td>
+                    <td class="green">90</td>
+                    <td class="orange">12.12</td>
+                    <td class="green">12.0 - 13.0+</td>
+                    <td class="orange">10.4</td>
+                    <td class="orange">7.12</td>
+                    <td class="orange">2.5</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class='heading'>
+            Install
+        </h2>
+
+        <pre><code>
+npm install --save page-scroll-indicator
+        </code></pre>
+
+        <h2 class='heading'>
+            Usage
+        </h2>
+
+        <h3 class="heading">
+            ESM:
+        </h3>
+
+        <pre><code>
+import 'page-scroll-indicator';
+        </code></pre>
+
+        <h3 class="heading">
+            CommonJS:
+        </h3>
+
+        <pre><code>
+require('page-scroll-indicator');
+        </code></pre>
+
+        <p class='text'>
+            <span class='info'>pageScrollIndicator</span> - Plugin entry point. The function takes a single argument as a config file. (Object with settings).
+        </p>
+
+        <p class='text'>
+            For example:
+        </p>
+
+        <pre><code>
+document.documentElement.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
+    scrollLine: 'top',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+        </code></pre>
+
+        <p class='text'>
+            <span class='info'>element</span> - the target element for which the plugin will act will always be the context of the pageScrollIndicator
+            function call (this). In the example above, it was document.documentElement. If you need to set a scroll indicator for the entire content
+            of the page, you must call it on document.documentElement or document.body. The following example is equivalent to the previous one:
+        </p>
+
+        <pre><code>
+document.body.pageScrollIndicator({
+    zIndex: 100,
+    height: 8,
+    opacity: 1,
+    bottom: true,
+    scrollLine: 'top',
+    backgroundColor: 'pink',
+    boxShadow: 'white',
+    transition: '200ms',
+});
+        </code></pre>
+
+        <p class="text">
+            You can use this plugin with jQuery. Plugin is initialized on some element using JavaScript:
+        </p>
+
+        <pre><code>
+document.querySelector('.element').pageScrollIndicator({
+    zIndex: 10,
+    height: 7.5,
+    opacity: 1,
+    scrollLine: 'top',
+    backgroundColor: 'blue',
+    boxShadow: 'gray',
+    transition: '220ms',
+});
+        </code></pre>
+
+        <p class="text">
+            You can use jQuery:
+        </p>
+
+        <pre><code>
+$('.element').pageScrollIndicator({
+    zIndex: 10,
+    height: 7.5,
+    opacity: 1,
+    scrollLine: 'top',
+    backgroundColor: 'blue',
+    boxShadow: 'gray',
+    transition: '220ms',
+});
+        </code></pre>
+
+        <p class='text'>
+            Margins, paddings and borders of the root element, the body element and their children will be included in the scrolling.
+        </p>
+
+        <p class='text'>
+            The plugin will continue to work after changing the screen resolution. It will recalculate all values and give the correct result for
+            scrolling the container content in real time without reloading the page. Hence, users will not be fooled if the screen resolution is
+            changed. One of the cases where this can happen is when the orientation of the mobile phone screen is changed. This happens when users
+            turn their phone. In addition, the user can work with DOM elements by adding, removing and modifying them.
+        </p>
+
+        <p class='text'>
+            The plugin can work with absolutely positioned elements.
+        </p>
+
+        <div class="danger">
+            Each call to the plugin on an element creates one scroll handler on the document. You should keep the number of plugin calls to a minimum.
+            Basically, a website needs one indicator to track an entire page or main article. Plugin use experimental CSS property will-change,
+            to tell the browser about two constantly changing properties of the element - top and right. The plugin is provided with an exit from
+            the handler if it covered all tracked content. These instructions tell the plugin not to modify the element if the user scrolls it
+            completely. All calls will happen in the requestAnimationFrame callback function.
+        </div>
+
+        <p class='text'>
+            In the sentences below, the word “element” will refer to the “div” element created by the plugin, which will act as a scroll indicator.
+        </p>
+
+        <p class='text'>
+            <span class='info'>zIndex</span> Element Z offset. Default value - 10000. Type <span class="type">string</span> or
+            <span class="type">number</span>. Any values are allowed, even negative ones. You should be aware that the scroll indicator should
+            take precedence over the stacking context than other elements in the block. Any values from -X to + X are allowed. For example: 10,
+            '10000' или -5000.
+        </p>
+
+        <p class='text'>
+            <span class='info'>height</span> Element height. Default value - 10px. Type <span class="type">string</span> or
+            <span class="type">number</span>. Any value except negative is allowed. Don't make the indicator very high. For example: 15, '7' или 8.5.
+        </p>
+
+        <p class='text'>
+            <span class='info'>opacity</span> Element transparency. Default value - 1. Type <span class="type">string</span> or
+            <span class="type">number</span>. Any value from 0 to 1 is allowed. For example: 1, '0.6' or 0.253.
+        </p>
+
+        <p class='text'>
+            <span class='info'>backgroundColor</span> Element background color. Default value - aqua. Type <span class="type">string</span>.
+            Any correct color value is allowed. For example: 'red', 'green' or #6242d2.
+        </p>
+
+        <p class='text'>
+            <span class='info'>boxShadow</span> Element shadow. Default value - 0 0 5px transparent. Type <span class="type">string</span>.
+            Any correct color value is allowed. For example: 'green', 'green inset' or '#6242d2'. You can only control the color of the shadow.
+            You can specify an inner or outer shadow.
+        </p>
+
+        <p class='text'>
+            <span class='info'>transition</span> Element animation speed. Default value - right 300ms linear. Type <span class="type">string</span>.
+            The following values are allowed: '350ms' or '1s'. You can only control the speed of the animation.
+        </p>
+
+        <p class='text'>
+            <span class='info'>bottom</span> The position of the element on the page. Allowed to be used only to track all content on the website.
+            This means that this value will be ignored if you initialize the plugin for any element other than HTML or BODY. Default value - false.
+            Type <span class="type">boolean</span>. The following values are allowed: true или false.
+        </p>
+
+        <p class='text'>
+            <span class='info'>scrollLine</span> - Sets the reference point for the scroll indicator. If "top" is specified, the plugin will wait
+            until the top edge of the element is at the top of the browser window, and only after that the indicator will start its work and finish
+            it, when the bottom edge of the element is at the top of the browser window. If "bottom" is specified, the plugin will not wait until
+            the top edge of the element is at the top of the browser window, it will work as soon as the element appears in the user's field of
+            view, and exits when the bottom edge of the element is in the view of the browser window. The value will have no effect if set on HTML
+            or BODY elements. Default value - bottom. Type <span class="type">string</span>. The following values are allowed: 'top' или 'bottom'.
+            Examples are given below.
+        </p>
+
+        <div class="danger">
+            Plugin does not work with elements that have an overflow property set to auto or scroll. The plugin does not work with elements
+            whose position property is set to sticky or fixed. In firefox browsers, you may notice slight twitching of the indicator when it
+            tracks the content of the content in an element with the scrollLine value set to bottom. If you notice incorrect operation of the
+            plugin with any elements under certain circumstances, please report it:
+            <a class="link" href="https://github.com/DenisLopatin/page-scroll-indicator/issues">issues</a>.
+        </div>
+
+        <p class="text">
+            You can initialize a plugin on an element without passing an object with settings. In this case, the default values will be applied.
+            The following two calls are equivalent:
+        </p>
+
+        <pre><code>
+$('.element').pageScrollIndicator({
+    zIndex: 10000,
+    height: 10,
+    opacity: 1,
+    scrollLine: 'top',
+    backgroundColor: 'aqua',
+    boxShadow: 'transparent',
+    transition: '300ms',
+    scrollLine: 'bottom'
+});
+        </code></pre>
+
+        <p class="text">
+            Same as:
+        </p>
+
+        <pre><code>
+$('.element').pageScrollIndicator();
+        </code></pre>
+
+    </section>
+    <section class="section-second" data-languade="en">
+
+    </section>
+    <div class="example-one">
+        <h2 class="heading">
+            ScrollLine: bottom
+        </h2>
+
+        <p class="text">
+            Behavior of the scroll indicator when setting the scrollLine at the bottom. In this case, the indicator starts working immediately
+            after the tracked element is in the user's field of view.
+        </p>
+
+        <p class="text">
+            Once the bottom edge of the tracked item is visible on the user's screen, the scroll indicator is displayed at 100%.
+        </p>
+    </div>
+    <div class="example-two">
+        <h2 class="heading">
+            ScrollLine: top
+        </h2>
+
+        <p class="text">
+            The behavior of the page scroll indicator when the ScrollLine is set to top. In this case, the indicator starts working only after
+            the tracked element touches the top edge of the browser window.
+        </p>
+
+        <p class="text">
+            As soon as the bottom edge of the tracked element touches the top edge of the browser window, the scroll bar appears at 100%.
+        </p>
+    </div>
+    <div class="example-three">
+        <h2 class="heading">
+            ScrollLine: bottom again
+        </h2>
+
+        <p class="text">
+            The current element has padding. As you can see, they do not affect the operation of the scroll indicator, it copes with it successfully.
+            Margins will also not create problems for the plugin to work.
+        </p>
+    </div>
+    <div class="example-four">
+        <h2 class="heading">
+            ScrollLine: top again
+        </h2>
+
+        <p class="text">
+            The current element has a 20px border. In this case, the operation of the scroll indicator will remain stable. The plugin will
+            calculate the thickness of the upper border and use the latter in its calculations. Lateral borders do not affect the indicator's
+            operation in any way. This will work no matter where you applied the style to create the border, directly in the HTML tag or CSS file.
+        </p>
+
+        <p class="text">
+            Pay attention to the specifics of the plugin when the ScrollLine is set to top, if it is the last element on the page. As you remember,
+            with ScrollLine: top, for the indicator to complete its work, the bottom edge of the element must touch the top edge of the browser
+            window. If the element closes the page, this will not happen. The plugin provides a special check for such a case and indicates the
+            end of the scrolling ahead of schedule. You can notice how the indicator in this block abruptly rolls from the middle to the end of
+            the right edge at the moment when the end of the current document is fixed.
+        </p>
+    </div>
+    <footer class='footer'>
+        (c) Page Scroll Indicator
+    </footer>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    background-color: #202020;
+}
+
+main {
+    display: block;
+}
+
+pre {
+    overflow-x: auto;
+    color: #57cbf1;
+    background-color: #484848;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.8rem;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    margin: 30px auto;
+    border-left: 1px solid #57cbf1;
+    background-color: #2d2d2d;
+    box-shadow: 7px 7px 8px #464646;
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        box-shadow: none;
+        border-left-color: transparent;
+        margin: 0;
+    }
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    opacity: 0.8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #008080;
+    padding: 0 0.35rem;
+    text-align: right;
+    background-color: #cce3e3;
+    box-shadow: 0 2px 5px azure;
+    user-select: none;
+}
+
+.section {
+    padding: 1rem 1rem 0.5rem 0.5rem;
+}
+
+.example-one,
+.example-two,
+.example-three,
+.example-four {
+    z-index: 20;
+    min-height: 200vh;
+    border: 1px solid transparent;
+    border-top-color: aquamarine;
+    border-bottom-color: aquamarine;
+    padding: 1rem 1rem 0.5rem 0.5rem;
+    line-height: 1.6;
+    background-color: #2d2d2d;
+}
+
+.example-three {
+    padding: 2rem;
+}
+
+.example-four {
+    border: 20px solid #484848;
+}
+
+.example-two {
+    border-color: transparent;
+}
+
+.footer {
+    height: 1.2rem;
+    border-top: 1px solid teal;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    text-align: right;
+    background-color: #cce3e3;
+    color: #202020;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.table {
+    border-collapse: collapse;
+    margin-bottom: 0.5rem;
+}
+
+.caption {
+    padding: 1rem 0;
+    color: #dedee1;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.thead {
+    background-color: #1b2b2f;
+    color: #d2d7d2;
+}
+
+td {
+    border: 1px solid #373737;
+    padding: 0.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.tbody td {
+    color: #262626;
+}
+
+.heading {
+    margin: 0;
+    padding-bottom: 0.5rem;
+    color: #222020;
+    text-shadow: 0 0 3px azure;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.social {
+    font-weight: 900;
+}
+
+.text {
+    margin: 0;
+    padding-bottom: 1rem;
+    line-height: 1.4;
+    color: #dedee1;
+}
+
+.info {
+    padding: 0 0.25rem;
+    border-radius: 0.3rem;
+    background-color: dodgerblue;
+    color: #3c3b3b;
+    font-weight: bold;
+}
+
+.type {
+    color: #217821;
+}
+
+.danger {
+    border: 1px solid #c4a739;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+    background-color: #4f2828;
+    color: whitesmoke;
+    border-radius: 0.2rem;
+}
+
+.link {
+    color: #c88e5b;
+    text-decoration: none;
+}
+
+.mr-1 {
+    margin-right: 0.75rem;
+}
+
+.green {
+    background-color: #137319;
+}
+
+.orange {
+    background-color: #b36809;
+}
+
+.red {
+    background-color: #591818;
+}
+
+.absolute {
+    position: fixed;
+    top: 500px;
+    left: 100px;
+    width: 500px;
+    height: 200vh;
+    background-color: red;
+}

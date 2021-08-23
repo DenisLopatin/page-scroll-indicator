@@ -1,152 +1,48 @@
-/** put scroll indicator in container
- * @param { HTMLElement } target - name of container for scroll
- * @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
+import createScrollIndicator from "./create-scroll-indicator";
+import putInSomeElement from "./put-in-some-element";
+import coverTheContentOfSomeElement from "./cover-the-content-of-some-element";
+import getRightOffsetOfElement from "./get-right-offset-of-element";
+import getTopOffsetOfElement from "./get-top-offset-of-element";
+import coverAllContent from "./cover-all-content";
+import errorHandler from "./error-handler";
+
+/**
+ * @function pageScrollIndicator - configuration function
+ * @param { Object } config - configuration
  * */
 
-function putIn(target, scrollPageIndicator) {
+export default function pageScrollIndicator(config = {}) {
     try {
-        const getOffset = () => {
-            const top = target.getBoundingClientRect().top * -1;
-            scrollPageIndicator.style.top = `${top}px`;
-        };
-        target.style.position = 'relative';
-        target.style.overflowX = 'hidden';
-        scrollPageIndicator.style.position = 'absolute';
-        target.append(scrollPageIndicator);
-        window.addEventListener('scroll', getOffset);
-    } catch (err) {
-        throw new Error(err);
-    }
-}
-
-/** return max height of the page
- * @return { number } - max height of the page
- * */
-
-function getMaxHeightValueOfThePage() {
-    try {
-        return Math.max(
-            document.body.scrollHeight,
-            document.documentElement.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.offsetHeight,
-            document.body.clientHeight,
-            document.documentElement.clientHeight,
-        );
-    } catch (err) {
-        throw new Error(err);
-    }
-}
-
-/** function coverTheTrackContent
- * the indicator covers the specified content
- * @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
- * @param { HTMLElement } trackElement - target element
- * @param { number } offsetTop - offset of the element
- * @param { string } scrollLine - line of the scroll relative element
- * */
-
-function coverTheTrackContent(scrollPageIndicator, trackElement, offsetTop, scrollLine) {
-    try {
-        if (scrollLine === 'top') {
-            const documentHeight = document.documentElement.clientHeight;
-            const fullHeight = window.pageYOffset + documentHeight;
-            if (fullHeight === getMaxHeightValueOfThePage()) {
-                scrollPageIndicator.style.right = '0';
-                return;
-            }
-            const elementHeight = trackElement.clientHeight;
-            const scrollTop = window.pageYOffset - offsetTop;
-            const result = Math.round((scrollTop * 100) / elementHeight);
-            scrollPageIndicator.style.right = `${String(100 - result)}%`;
+        let target = this;
+        if (window.jQuery && target instanceof window.jQuery) {
+            target = this.get(0);
         }
-        if (scrollLine === 'bottom') {
-            if (!window.pageYOffset) {
-                scrollPageIndicator.style.right = '100%';
-                return;
-            }
-            const documentHeight = document.documentElement.clientHeight;
-            const elementHeight = trackElement.clientHeight;
-            const scrollTop = window.pageYOffset - offsetTop + documentHeight;
-            const result = Math.round(
-                (scrollTop * 100) / elementHeight,
-            );
-            scrollPageIndicator.style.right = `${String(100 - result)}%`;
-        }
-    } catch (err) {
-        throw new Error(err);
-    }
-}
-
-/** function coverTheEntireContent
- *  the indicator covers all the content
- *  @param { HTMLElement } scrollPageIndicator - HTMLElement div for scroll
- * */
-
-function coverTheEntireContent(scrollPageIndicator) {
-    try {
-        const documentFullHeight = getMaxHeightValueOfThePage();
-        const documentHeight = document.documentElement.clientHeight;
-        const finalHeight = documentFullHeight - documentHeight;
-        const scrollTop = window.pageYOffset;
-        const result = Math.round((scrollTop * 100) / finalHeight);
-        scrollPageIndicator.style.right = `${String(100 - result)}%`;
-    } catch (err) {
-        throw new Error(err);
-    }
-}
-
-/** function pageScrollIndicator
- *   config function
- *   @param { Object } config - configuration
- * */
-
-function pageScrollIndicator(config) {
-    try {
-        const target = this;
         const isForPage = target.tagName === 'HTML' || target.tagName === 'BODY';
-        const element = document.createElement('div');
-        element.style.position = 'fixed';
-        element.style.zIndex = `${String(config.zIndex)}` || '10000';
-        config.bottom
-            ? (element.style.bottom = '0')
-            : (element.style.top = '0');
-        element.style.left = '0';
-        element.style.right = '100%';
-        element.style.height = `${String(config.height)}px` || '10px';
-        element.style.opacity = `${String(config.opacity)}` || '1';
-        element.style.backgroundColor = config.backgroundColor || 'aqua';
-        element.style.boxShadow = `0 0 5px ${config.boxShadow || 'transparent'}`;
-        element.style.transition = `right ${config.transition || '300ms'} linear`;
-        if (config.put && !isForPage) {
-            putIn(target, element);
-        }
+        const scrollIndicator = createScrollIndicator(config);
         if (!isForPage) {
-            const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
             const scrollLine = config.scrollLine || 'bottom';
+            putInSomeElement(target, scrollIndicator);
             window.addEventListener(
                 'scroll',
-                coverTheTrackContent.bind(
-                    null, element, target, offsetTop, scrollLine,
-                ),
+                () => requestAnimationFrame(() => {
+                    coverTheContentOfSomeElement(
+                        ...getRightOffsetOfElement(
+                            ...getTopOffsetOfElement(target, scrollIndicator),
+                            scrollLine,
+                        ),
+                    );
+                }),
             );
         } else {
-            document.body.append(element);
+            document.body.appendChild(scrollIndicator);
             window.addEventListener(
                 'scroll',
-                coverTheEntireContent.bind(null, element),
+                () => requestAnimationFrame(() => {
+                    coverAllContent(scrollIndicator);
+                }),
             );
         }
     } catch (err) {
-        throw new Error(err);
+        errorHandler(err);
     }
 }
-
-Element.prototype.pageScrollIndicator = pageScrollIndicator;
-if (window.jQuery) {
-    (function jQuery($) {
-        $.pageScrollIndicator = pageScrollIndicator;
-    }(window.jQuery));
-}
-
-export default pageScrollIndicator;

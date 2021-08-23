@@ -14,7 +14,11 @@
         ],
         "no-param-reassign": "off",
         "operator-linebreak": "off",
-        "no-console": "warn",
+        "no-console": [
+            "error", {
+                "allow": ["warn", "error"]
+            }
+        ],
         "linebreak-style": "off",
         "quotes": "off",
         "no-unused-expressions": "off",

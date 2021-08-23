@@ -1,37 +1,24 @@
-import '../index.html';
-import pageScrollIndicator from './page-scroll-indicator';
+/*
+* page scroll indicator v 3.0.0
+* creates a scroll indicator for a page, article, or other elements
+* entry point - function pageScrollIndicator
+* NPM: https://www.npmjs.com/package/page-scroll-indicator
+* GITHUB: https://github.com/DenisLopatin/page-scroll-indicator
+* if you encounter a problem when using the plugin please write about it: https://github.com/DenisLopatin/page-scroll-indicator/issues
+* */
+
+import pageScrollIndicator from "./page-scroll-indicator";
+
+if (sessionStorage.getItem('page-scroll-indicator')) {
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
+}
+
+sessionStorage.setItem('page-scroll-indicator', 'page-is-loaded');
 
 Element.prototype.pageScrollIndicator = pageScrollIndicator;
-
-document.documentElement.pageScrollIndicator({
-    zIndex: 100,
-    height: 8,
-    opacity: 1,
-    bottom: true,
-    scrollLine: 'top',
-    backgroundColor: 'pink',
-    boxShadow: 'white',
-    transition: '200ms',
-});
-
-document.querySelector('.example-one').pageScrollIndicator({
-    zIndex: 100,
-    height: 10,
-    opacity: 0.5,
-    put: true,
-    scrollLine: 'bottom',
-    backgroundColor: '#6242d2',
-    boxShadow: 'white',
-    transition: '200ms',
-});
-
-document.querySelector('.example-two').pageScrollIndicator({
-    zIndex: 100,
-    height: 5,
-    opacity: 0.7,
-    put: true,
-    scrollLine: 'top',
-    backgroundColor: 'aqua',
-    boxShadow: 'blue',
-    transition: '400ms',
-});
+if (window.jQuery) {
+    (function jQuery($) {
+        $.prototype.pageScrollIndicator = pageScrollIndicator;
+    }(window.jQuery));
+}
