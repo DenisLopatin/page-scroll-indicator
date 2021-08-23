@@ -7,12 +7,12 @@ On the documentation page, you can see the plugin in action,
 find out browsers support and get more information.
 
 ## RU DOCUMENTATION:
-[Plugin documentation in Russian](https://denislopatin.github.io/Scroll-Page-Indicator/)
+[Plugin documentation in Russian](https://denislopatin.github.io/page-scroll-indicator/)
 
 ---
 
 ## EN DOCUMENTATION:
-[Plugin documentation in English](https://denislopatin.github.io/Scroll-Page-Indicator/)
+[Plugin documentation in English](https://denislopatin.github.io/page-scroll-indicator/en-index.html)
 
 ---
 
