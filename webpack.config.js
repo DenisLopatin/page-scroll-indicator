@@ -52,10 +52,6 @@ module.exports = {
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html',
         }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'en-index.html'),
-            filename: 'en-index.html',
-        }),
     ],
     optimization: {
         minimize: true,
