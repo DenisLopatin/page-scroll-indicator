@@ -1,0 +1,10 @@
+/node_modules
+.idea
+.git
+package-lock.json
+.husky
+/dist
+.prettierrc
+webpack.config.js
+.eslintignore
+.eslintrc
